@@ -4,30 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AMAZIR SHOP - Artisanat Marocain Authentique | Marrakech</title>
-    
-    <!-- SEO Meta Tags -->
     <meta name="description" content="Découvrez l'authenticité de l'artisanat berbère avec AMAZIR SHOP. Tapis, parfums, décoration. Livraison mondiale depuis Marrakech.">
-    <meta name="keywords" content="amazir, shop, marrakech, artisanat, marocain, berbère, tapis, parfums, décoration, souk">
-    <meta name="author" content="AMAZIR SHOP">
-    
-    <!-- Social Media Meta Tags -->
-    <meta property="og:title" content="AMAZIR SHOP - Artisanat Marocain Authentique">
-    <meta property="og:description" content="Découvrez l'authenticité de l'artisanat berbère depuis le cœur de Marrakech">
-    <meta property="og:image" content="https://images.unsplash.com/photo-1578924608864-7c69bb74b585?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80">
-    <meta property="og:url" content="https://yourusername.github.io/amazir-shop">
-    <meta property="og:type" content="website">
-    
-    <!-- Favicon -->
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏺</text></svg>">
-    
-    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- Performance Optimization -->
-    <link rel="preconnect" href="https://images.unsplash.com">
-    <link rel="dns-prefetch" href="https://images.unsplash.com">
     
     <style>
         :root {
@@ -40,7 +20,7 @@
             --gray: #666666;
             --light-gray: #f5f5f5;
             
-            /* Palette Chabi Chic - inspirée du Maroc */
+            /* Nouvelle palette Chabi Chic - inspirée du Maroc */
             --majorelle-blue: #0072ce;
             --sahara-sand: #deb887;
             --mint-green: #40e0d0;
@@ -89,8 +69,14 @@
         }
 
         @keyframes slideDown {
-            from { transform: translateY(-100%); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
         }
 
         header.scrolled {
@@ -158,6 +144,10 @@
             transition: var(--transition);
         }
 
+        .mobile-menu-btn:hover {
+            color: var(--primary-gold);
+        }
+
         .cart-icon {
             background: linear-gradient(135deg, var(--black), #333);
             color: white;
@@ -199,6 +189,153 @@
             80% { transform: translateY(-5px); }
         }
 
+        /* Search Bar */
+        .search-container {
+            position: relative;
+            max-width: 500px;
+            margin: 2rem auto;
+        }
+
+        .search-bar {
+            width: 100%;
+            padding: 1rem 1.5rem 1rem 3rem;
+            border: 2px solid var(--light-gray);
+            border-radius: 50px;
+            font-size: 1rem;
+            font-family: 'Inter', sans-serif;
+            transition: var(--transition);
+            background: white;
+            box-shadow: var(--shadow);
+        }
+
+        .search-bar:focus {
+            outline: none;
+            border-color: var(--primary-gold);
+            box-shadow: 0 0 0 3px rgba(212,175,55,0.1);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 1.2rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--gray);
+            font-size: 1.2rem;
+        }
+
+        .search-results {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: white;
+            border-radius: 20px;
+            box-shadow: var(--shadow-hover);
+            max-height: 300px;
+            overflow-y: auto;
+            z-index: 100;
+            margin-top: 0.5rem;
+            display: none;
+        }
+
+        .search-result-item {
+            padding: 1rem 1.5rem;
+            border-bottom: 1px solid var(--light-gray);
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .search-result-item:hover {
+            background: var(--light-gray);
+        }
+
+        .search-result-item:last-child {
+            border-bottom: none;
+        }
+
+        /* Mobile Navigation */
+        .mobile-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 1999;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .mobile-overlay.open {
+            display: block;
+            opacity: 1;
+        }
+
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 300px;
+            height: 100vh;
+            background: white;
+            z-index: 2000;
+            transition: right 0.3s ease;
+            box-shadow: var(--shadow-hover);
+            padding: 2rem;
+        }
+
+        .mobile-nav.open {
+            right: 0;
+        }
+
+        .mobile-nav-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--light-gray);
+        }
+
+        .mobile-nav-links {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+
+        .mobile-nav-links a {
+            display: block;
+            padding: 1rem 0;
+            color: var(--black);
+            text-decoration: none;
+            border-bottom: 1px solid var(--light-gray);
+            transition: var(--transition);
+            font-weight: 500;
+        }
+
+        .mobile-nav-links a:hover {
+            color: var(--primary-gold);
+            padding-left: 1rem;
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--gray);
+            transition: var(--transition);
+        }
+
+        .close-btn:hover {
+            color: var(--primary-gold);
+        }
+
         /* Pages */
         .page {
             display: none;
@@ -216,7 +353,7 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Hero Section */
+        /* Hero Section - Design Chabi Chic */
         .hero {
             height: 100vh;
             background: linear-gradient(135deg, rgba(30,58,138,0.3), rgba(0,114,206,0.4)),
@@ -238,11 +375,6 @@
             bottom: 0;
             background: linear-gradient(45deg, transparent 30%, rgba(64,224,208,0.1) 50%, transparent 70%);
             animation: shimmer 4s ease-in-out infinite;
-        }
-
-        @keyframes shimmer {
-            0%, 100% { opacity: 0; }
-            50% { opacity: 1; }
         }
 
         .hero::after {
@@ -316,12 +448,7 @@
             line-height: 1.6;
         }
 
-        @keyframes slideInUp {
-            from { transform: translateY(50px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
-
-        /* Search Bar Hero */
+        /* Search Bar Hero - Style Chabi Chic */
         .hero-search {
             position: relative;
             max-width: 600px;
@@ -350,6 +477,10 @@
             transform: translateY(-2px);
         }
 
+        .hero-search-bar::placeholder {
+            color: var(--gray);
+        }
+
         .hero-search-icon {
             position: absolute;
             left: 2rem;
@@ -368,22 +499,19 @@
             margin-top: 2rem;
         }
 
-        .hero-cta-primary, .hero-cta-secondary {
-            padding: 1.3rem 3rem;
-            font-size: 1.1rem;
-            font-weight: 600;
-            border-radius: 50px;
-            cursor: pointer;
-            transition: var(--transition);
-            text-decoration: none;
-            display: inline-block;
-            border: none;
-        }
-
         .hero-cta-primary {
             background: linear-gradient(135deg, var(--majorelle-blue), var(--deep-blue));
             color: white;
+            padding: 1.3rem 3rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: var(--transition);
             box-shadow: 0 15px 40px rgba(30,58,138,0.3);
+            text-decoration: none;
+            display: inline-block;
         }
 
         .hero-cta-primary:hover {
@@ -396,12 +524,326 @@
             backdrop-filter: blur(20px);
             border: 2px solid rgba(255,255,255,0.3);
             color: white;
+            padding: 1.3rem 3rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+            display: inline-block;
         }
 
         .hero-cta-secondary:hover {
             background: rgba(255,255,255,0.95);
             color: var(--majorelle-blue);
             transform: translateY(-5px);
+        }
+
+        /* Collections Showcase */
+        .collections-showcase {
+            padding: 8rem 2rem;
+            background: linear-gradient(135deg, var(--warm-beige), var(--soft-pink));
+            position: relative;
+            overflow: hidden;
+        }
+
+        .collections-showcase::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 40%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(64,224,208,0.1) 0%, transparent 70%);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .collections-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .collections-header {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+
+        .collections-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            color: var(--deep-blue);
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .collections-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(135deg, var(--majorelle-blue), var(--mint-green));
+            border-radius: 2px;
+        }
+
+        .collections-subtitle {
+            font-size: 1.3rem;
+            color: var(--olive-green);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        .collections-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+
+        .collection-card {
+            background: white;
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: var(--shadow-soft);
+            transition: var(--transition-slow);
+            cursor: pointer;
+            position: relative;
+        }
+
+        .collection-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .collection-image {
+            height: 300px;
+            background: var(--cream);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .collection-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition-slow);
+        }
+
+        .collection-card:hover .collection-image img {
+            transform: scale(1.1);
+        }
+
+        .collection-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, var(--terracotta), #ff6b6b);
+            color: white;
+            padding: 0.6rem 1.5rem;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            animation: pulse 2s infinite;
+        }
+
+        .collection-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(0,114,206,0.8), rgba(30,58,138,0.8));
+            opacity: 0;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .collection-card:hover .collection-overlay {
+            opacity: 1;
+        }
+
+        .collection-cta {
+            background: white;
+            color: var(--majorelle-blue);
+            border: none;
+            padding: 1.2rem 2.5rem;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transform: translateY(30px);
+            transition: var(--transition);
+            font-size: 1.1rem;
+        }
+
+        .collection-card:hover .collection-cta {
+            transform: translateY(0);
+        }
+
+        .collection-info {
+            padding: 2.5rem;
+        }
+
+        .collection-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--deep-blue);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .collection-description {
+            color: var(--olive-green);
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .collection-count {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--majorelle-blue);
+            font-weight: 600;
+        }
+
+        /* Story Section */
+        .story-section {
+            padding: 8rem 2rem;
+            background: linear-gradient(135deg, var(--deep-blue), var(--majorelle-blue));
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .story-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="moroccan" patternUnits="userSpaceOnUse" width="20" height="20"><polygon points="10,0 20,10 10,20 0,10" fill="rgba(64,224,208,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23moroccan)"/></svg>') repeat;
+        }
+
+        .story-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .story-content h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 5vw, 3.8rem);
+            margin-bottom: 2rem;
+            background: linear-gradient(135deg, var(--sahara-sand), var(--mint-green));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.2;
+        }
+
+        .story-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+            line-height: 1.8;
+        }
+
+        .story-content .highlight {
+            color: var(--sahara-sand);
+            font-weight: 600;
+        }
+
+        .story-image {
+            position: relative;
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: var(--shadow-hover);
+        }
+
+        .story-image img {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+        }
+
+        .story-image::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(64,224,208,0.1), transparent);
+        }
+
+        /* Trust Indicators */
+        .trust-section {
+            padding: 6rem 2rem;
+            background: var(--warm-beige);
+        }
+
+        .trust-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .trust-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--deep-blue);
+            margin-bottom: 3rem;
+        }
+
+        .trust-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 3rem;
+        }
+
+        .trust-item {
+            background: white;
+            padding: 3rem 2rem;
+            border-radius: 25px;
+            box-shadow: var(--shadow-soft);
+            transition: var(--transition);
+        }
+
+        .trust-item:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow);
+        }
+
+        .trust-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--majorelle-blue);
+        }
+
+        .trust-item h4 {
+            font-size: 1.4rem;
+            color: var(--deep-blue);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .trust-item p {
+            color: var(--olive-green);
+            line-height: 1.6;
         }
 
         /* Products Section */
@@ -439,6 +881,40 @@
             height: 3px;
             background: linear-gradient(135deg, var(--primary-gold), var(--secondary-gold));
             border-radius: 2px;
+        }
+
+        .section-header p {
+            color: var(--gray);
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .products-filter {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background: white;
+            border: 2px solid var(--primary-gold);
+            color: var(--primary-gold);
+            padding: 0.8rem 2rem;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 500;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--primary-gold);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(212,175,55,0.3);
         }
 
         .products-grid {
@@ -613,6 +1089,631 @@
             box-shadow: 0 15px 40px rgba(212,175,55,0.4);
         }
 
+        /* Product Detail Page */
+        .product-detail-section {
+            padding: 4rem 2rem;
+            background: white;
+        }
+
+        .product-detail-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .product-gallery {
+            position: sticky;
+            top: 100px;
+        }
+
+        .main-image {
+            width: 100%;
+            height: 500px;
+            border-radius: 20px;
+            overflow: hidden;
+            margin-bottom: 1rem;
+            box-shadow: var(--shadow);
+        }
+
+        .main-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .thumbnail-gallery {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+        }
+
+        .thumbnail {
+            height: 100px;
+            border-radius: 10px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: var(--transition);
+            border: 2px solid transparent;
+        }
+
+        .thumbnail:hover,
+        .thumbnail.active {
+            border-color: var(--primary-gold);
+            transform: scale(1.05);
+        }
+
+        .thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .product-detail-info {
+            padding: 2rem 0;
+        }
+
+        .breadcrumb {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        .breadcrumb a {
+            color: var(--primary-gold);
+            text-decoration: none;
+        }
+
+        .product-detail-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--black);
+            margin-bottom: 1rem;
+        }
+
+        .product-detail-rating {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .product-detail-price {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .current-price {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-gold);
+        }
+
+        .original-price {
+            font-size: 1.8rem;
+            color: var(--gray);
+            text-decoration: line-through;
+        }
+
+        .discount-badge {
+            background: #ff4757;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .product-features {
+            background: var(--light-gray);
+            padding: 2rem;
+            border-radius: 20px;
+            margin-bottom: 2rem;
+        }
+
+        .product-features h4 {
+            color: var(--black);
+            margin-bottom: 1rem;
+        }
+
+        .features-list {
+            list-style: none;
+        }
+
+        .features-list li {
+            padding: 0.5rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .features-list li::before {
+            content: '✓';
+            color: var(--primary-gold);
+            font-weight: bold;
+        }
+
+        .quantity-selector {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .quantity-label {
+            font-weight: 600;
+            color: var(--black);
+        }
+
+        .quantity-controls {
+            display: flex;
+            align-items: center;
+            border: 2px solid var(--light-gray);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .quantity-btn {
+            background: none;
+            border: none;
+            padding: 0.8rem 1rem;
+            cursor: pointer;
+            font-size: 1.2rem;
+            color: var(--primary-gold);
+            transition: var(--transition);
+        }
+
+        .quantity-btn:hover {
+            background: var(--light-gray);
+        }
+
+        .quantity-input {
+            border: none;
+            padding: 0.8rem;
+            text-align: center;
+            width: 60px;
+            font-size: 1rem;
+        }
+
+        .product-actions {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .add-to-cart-btn {
+            flex: 2;
+            background: linear-gradient(135deg, var(--primary-gold), var(--secondary-gold));
+            color: white;
+            border: none;
+            padding: 1.5rem 2rem;
+            border-radius: 15px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .add-to-cart-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(212,175,55,0.4);
+        }
+
+        .buy-now-btn {
+            flex: 1;
+            background: var(--black);
+            color: white;
+            border: none;
+            padding: 1.5rem 2rem;
+            border-radius: 15px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .buy-now-btn:hover {
+            background: #333;
+            transform: translateY(-3px);
+        }
+
+        /* Cart Page */
+        .cart-section {
+            padding: 4rem 2rem;
+            background: var(--light-gray);
+            min-height: 80vh;
+        }
+
+        .cart-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .cart-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .cart-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            color: var(--black);
+            margin-bottom: 1rem;
+        }
+
+        .cart-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 3rem;
+        }
+
+        .cart-items {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+        }
+
+        .cart-item {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            padding: 2rem 0;
+            border-bottom: 1px solid var(--light-gray);
+        }
+
+        .cart-item:last-child {
+            border-bottom: none;
+        }
+
+        .cart-item-image {
+            width: 120px;
+            height: 120px;
+            border-radius: 15px;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+
+        .cart-item-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .cart-item-details {
+            flex: 1;
+        }
+
+        .cart-item-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--black);
+            margin-bottom: 0.5rem;
+        }
+
+        .cart-item-category {
+            color: var(--primary-gold);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .cart-item-price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-gold);
+        }
+
+        .cart-item-controls {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .cart-quantity-controls {
+            display: flex;
+            align-items: center;
+            border: 2px solid var(--light-gray);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .cart-quantity-btn {
+            background: none;
+            border: none;
+            padding: 0.5rem 0.8rem;
+            cursor: pointer;
+            color: var(--primary-gold);
+            transition: var(--transition);
+        }
+
+        .cart-quantity-btn:hover {
+            background: var(--light-gray);
+        }
+
+        .cart-quantity-display {
+            padding: 0.5rem 1rem;
+            font-weight: 600;
+            min-width: 50px;
+            text-align: center;
+        }
+
+        .remove-item-btn {
+            background: #ff4757;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+
+        .remove-item-btn:hover {
+            background: #ff3742;
+        }
+
+        .cart-summary {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            height: fit-content;
+            position: sticky;
+            top: 100px;
+        }
+
+        .summary-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--black);
+            margin-bottom: 2rem;
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+            padding: 0.5rem 0;
+        }
+
+        .summary-row.total {
+            border-top: 2px solid var(--light-gray);
+            padding-top: 1rem;
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--primary-gold);
+        }
+
+        .checkout-btn {
+            width: 100%;
+            background: linear-gradient(135deg, var(--primary-gold), var(--secondary-gold));
+            color: white;
+            border: none;
+            padding: 1.5rem;
+            border-radius: 15px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            margin-top: 2rem;
+        }
+
+        .checkout-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(212,175,55,0.4);
+        }
+
+        .empty-cart {
+            text-align: center;
+            padding: 4rem 2rem;
+        }
+
+        .empty-cart-icon {
+            font-size: 4rem;
+            color: var(--gray);
+            margin-bottom: 2rem;
+        }
+
+        .empty-cart h3 {
+            font-size: 2rem;
+            color: var(--black);
+            margin-bottom: 1rem;
+        }
+
+        .empty-cart p {
+            color: var(--gray);
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+        }
+
+        /* Payment Page */
+        .payment-section {
+            padding: 4rem 2rem;
+            background: var(--light-gray);
+            min-height: 90vh;
+        }
+
+        .payment-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .payment-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .payment-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            color: var(--black);
+            margin-bottom: 1rem;
+        }
+
+        .payment-form {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: var(--shadow-hover);
+        }
+
+        .form-section {
+            margin-bottom: 3rem;
+        }
+
+        .form-section h3 {
+            font-size: 1.5rem;
+            color: var(--black);
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .form-section-icon {
+            background: var(--primary-gold);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+
+                           .form-group {
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.8rem;
+            color: var(--black);
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem 1.5rem;
+            border: 2px solid var(--light-gray);
+            border-radius: 15px;
+            font-size: 1rem;
+            font-family: 'Inter', sans-serif;
+            transition: var(--transition);
+            background: var(--white);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-gold);
+            box-shadow: 0 0 0 3px rgba(212,175,55,0.1);
+        }
+
+        .form-group textarea {
+            height: 120px;
+            resize: vertical;
+        }
+
+        .form-group {
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.8rem;
+            color: var(--black);
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 1rem 1.5rem;
+            border: 2px solid var(--light-gray);
+            border-radius: 15px;
+            font-size: 1rem;
+            font-family: 'Inter', sans-serif;
+            transition: var(--transition);
+            background: var(--white);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--primary-gold);
+            box-shadow: 0 0 0 3px rgba(212,175,55,0.1);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .card-icons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .card-icon {
+            width: 50px;
+            height: 30px;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: bold;
+            color: white;
+        }
+
+        .visa { background: #1a1f71; }
+        .mastercard { background: #eb001b; }
+        .amex { background: #006fcf; }
+
+        .order-summary-payment {
+            background: var(--light-gray);
+            padding: 2rem;
+            border-radius: 15px;
+            margin-bottom: 3rem;
+        }
+
+        .place-order-btn {
+            width: 100%;
+            background: linear-gradient(135deg, var(--primary-gold), var(--secondary-gold));
+            color: white;
+            border: none;
+            padding: 2rem;
+            border-radius: 15px;
+            font-size: 1.3rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .place-order-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 50px rgba(212,175,55,0.4);
+        }
+
         /* About Section */
         .about-section {
             padding: 6rem 2rem;
@@ -625,7 +1726,10 @@
         .about-content {
             max-width: 1200px;
             margin: 0 auto;
-            text-align: center;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
             position: relative;
             z-index: 2;
         }
@@ -645,9 +1749,45 @@
             margin-bottom: 2rem;
             opacity: 0.9;
             line-height: 1.8;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
+        }
+
+        .about-features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .about-feature {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.2);
+            text-align: center;
+            transition: all 0.4s ease;
+        }
+
+        .about-feature:hover {
+            background: rgba(212,175,55,0.2);
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+
+        .about-feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .about-feature h4 {
+            color: var(--primary-gold);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
         }
 
         /* Contact Section */
@@ -657,9 +1797,12 @@
         }
 
         .contact-container {
-            max-width: 800px;
+            max-width: 1200px;
             margin: 0 auto;
-            text-align: center;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
         }
 
         .contact-info {
@@ -667,15 +1810,25 @@
             padding: 3rem;
             border-radius: 25px;
             box-shadow: var(--shadow);
-            margin-bottom: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-info::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(135deg, var(--primary-gold), var(--secondary-gold));
         }
 
         .contact-item {
             display: flex;
             align-items: center;
-            justify-content: center;
-            margin-bottom: 2rem;
-            padding: 1.5rem;
+            margin-bottom: 2.5rem;
+            padding: 2rem;
             background: var(--light-gray);
             border-radius: 20px;
             transition: var(--transition);
@@ -683,13 +1836,22 @@
 
         .contact-item:hover {
             background: var(--cream);
-            transform: scale(1.02);
+            transform: translateX(10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
 
         .contact-icon {
-            font-size: 2rem;
-            margin-right: 1rem;
-            color: var(--primary-gold);
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--primary-gold), var(--secondary-gold));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 2rem;
+            font-size: 1.8rem;
+            color: white;
+            box-shadow: 0 10px 30px rgba(212,175,55,0.3);
         }
 
         .contact-detail h4 {
@@ -712,6 +1874,70 @@
 
         .contact-detail a:hover {
             color: var(--secondary-gold);
+        }
+
+        .contact-form {
+            background: white;
+            padding: 3rem;
+            border-radius: 25px;
+            box-shadow: var(--shadow-hover);
+        }
+
+        .form-header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .form-header h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            color: var(--black);
+            margin-bottom: 1rem;
+        }
+
+        .form-header p {
+            color: var(--gray);
+            font-size: 1.1rem;
+        }
+
+        .submit-btn {
+            width: 100%;
+            background: linear-gradient(135deg, var(--primary-gold), var(--secondary-gold));
+            color: white;
+            border: none;
+            padding: 1.5rem;
+            border-radius: 15px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(212,175,55,0.4);
+        }
+
+        .submit-btn:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255,255,255,0.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
         }
 
         /* Footer */
@@ -739,7 +1965,6 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 3rem;
-            text-align: center;
         }
 
         .footer-section h4 {
@@ -772,20 +1997,12 @@
 
         .footer-links a:hover {
             color: var(--primary-gold);
-        }
-
-        .footer-bottom {
-            border-top: 1px solid rgba(255,255,255,0.1);
-            margin-top: 3rem;
-            padding-top: 2rem;
-            text-align: center;
-            color: rgba(255,255,255,0.6);
+            padding-left: 0.5rem;
         }
 
         .social-links {
             display: flex;
             gap: 1rem;
-            justify-content: center;
             margin-top: 1rem;
         }
 
@@ -806,6 +2023,14 @@
         .social-link:hover {
             background: var(--primary-gold);
             transform: translateY(-5px);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            margin-top: 3rem;
+            padding-top: 2rem;
+            text-align: center;
+            color: rgba(255,255,255,0.6);
         }
 
         /* Notifications */
@@ -831,14 +2056,56 @@
             to { transform: translateX(0); opacity: 1; }
         }
 
-        /* Mobile Responsive */
-        @media (max-width: 768px) {
+        .notification.slideOutNotification {
+            animation: slideOutNotification 0.5s ease-in forwards;
+        }
+
+        @keyframes slideOutNotification {
+            to { transform: translateX(400px); opacity: 0; }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
             .nav-links {
                 display: none;
             }
 
             .mobile-menu-btn {
                 display: block;
+            }
+
+            .mobile-nav {
+                display: block;
+            }
+
+            .hero-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .contact-container {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .product-detail-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .cart-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                padding: 1rem;
             }
 
             .hero {
@@ -849,14 +2116,31 @@
                 padding: 0 1rem;
             }
 
-            .hero-cta {
+            .hero-stats {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+            }
+
+            .cta-buttons {
                 flex-direction: column;
                 align-items: center;
+            }
+
+            .trust-badges {
+                gap: 1rem;
             }
 
             .products-grid {
                 grid-template-columns: 1fr;
                 gap: 2rem;
+            }
+
+            .about-features {
+                grid-template-columns: 1fr;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
             }
 
             .footer-content {
@@ -868,6 +2152,44 @@
                 right: 1rem;
                 left: 1rem;
                 max-width: none;
+            }
+
+            .cart-item {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .cart-item-image {
+                width: 200px;
+                height: 200px;
+            }
+
+            .product-actions {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-stats {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .countdown {
+                gap: 0.5rem;
+            }
+
+            .countdown-item {
+                min-width: 50px;
+                padding: 0.3rem 0.8rem;
+            }
+
+            .section-header h2 {
+                font-size: 2.5rem;
+            }
+
+            .about-text h2 {
+                font-size: 2.5rem;
             }
         }
     </style>
@@ -891,9 +2213,25 @@
         </nav>
     </header>
 
+    <!-- Mobile Navigation -->
+    <div class="mobile-overlay" id="mobileOverlay" onclick="closeMobileMenu()"></div>
+    <div class="mobile-nav" id="mobileNav">
+        <div class="mobile-nav-header">
+            <div class="logo">AMAZIR SHOP</div>
+            <button class="close-btn" onclick="closeMobileMenu()">×</button>
+        </div>
+        <div class="mobile-nav-links">
+            <a onclick="showPage('home'); closeMobileMenu();">🏠 Accueil</a>
+            <a onclick="showPage('products'); closeMobileMenu();">🛍️ Produits</a>
+            <a onclick="showPage('about'); closeMobileMenu();">ℹ️ À Propos</a>
+            <a onclick="showPage('contact'); closeMobileMenu();">📞 Contact</a>
+            <a onclick="showPage('cart'); closeMobileMenu();">🛒 Panier (<span id="mobileCartCount">0</span>)</a>
+        </div>
+    </div>
+
     <!-- HOME PAGE -->
     <div class="page active" id="home">
-        <!-- Hero Section -->
+        <!-- Hero Section Chabi Chic -->
         <section class="hero">
             <div class="hero-content">
                 <div class="hero-badge">
@@ -902,7 +2240,7 @@
 
                 <h1>
                     <span class="brand-name">AMAZIR</span>
-                    <span class="subtitle-text">Collection Authentique</span>
+                    <span class="subtitle-text">Collection de AMAZIR  </span>
                 </h1>
                 
                 <p class="hero-description">
@@ -913,7 +2251,8 @@
                 <!-- Search Bar Hero -->
                 <div class="hero-search">
                     <div class="hero-search-icon">🔍</div>
-                    <input type="text" class="hero-search-bar" placeholder="Rechercher tapis, parfums, décoration...">
+                    <input type="text" class="hero-search-bar" placeholder="Rechercher tapis, parfums, décoration..." id="homeSearchBar" oninput="searchProducts(this.value)">
+                    <div class="search-results" id="homeSearchResults"></div>
                 </div>
                 
                 <div class="hero-cta">
@@ -926,6 +2265,142 @@
                 </div>
             </div>
         </section>
+
+        <!-- Collections Showcase -->
+        <section class="collections-showcase">
+            <div class="collections-container">
+                <div class="collections-header">
+                    <h2 class="collections-title">Nos Collections Signature</h2>
+                    <p class="collections-subtitle">
+                        Une sélection curatée de trésors artisanaux, where tradition meets contemporary elegance
+                    </p>
+                </div>
+                
+                <div class="collections-grid">
+                    <!-- Collection Tapis -->
+                    <div class="collection-card" onclick="showPage('products'); filterProducts('tapis');">
+                        <div class="collection-image">
+                            <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Collection Tapis Berbères">
+                            <div class="collection-badge">Bestsellers</div>
+                            <div class="collection-overlay">
+                                <button class="collection-cta">Découvrir la Collection</button>
+                            </div>
+                        </div>
+                        <div class="collection-info">
+                            <h3 class="collection-name">Tapis Berbères</h3>
+                            <p class="collection-description">
+                                Des pièces uniques tissées à la main par les femmes berbères du Haut Atlas. 
+                                Chaque motif raconte une histoire ancestrale.
+                            </p>
+                            <div class="collection-count">
+                                <span>📿</span>
+                                <span>16 créations disponibles</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Collection Parfums -->
+                    <div class="collection-card" onclick="showPage('products'); filterProducts('parfums');">
+                        <div class="collection-image">
+                            <img src="https://images.unsplash.com/photo-1594035910387-fea47794261f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Collection Parfums">
+                            <div class="collection-badge">Nouveautés</div>
+                            <div class="collection-overlay">
+                                <button class="collection-cta">Découvrir la Collection</button>
+                            </div>
+                        </div>
+                        <div class="collection-info">
+                            <h3 class="collection-name">Parfums & Essences</h3>
+                            <p class="collection-description">
+                                Fragrances rares extraites des jardins secrets du Maroc. 
+                                Oud, rose de Damas, argan... l'essence pure de notre terroir.
+                            </p>
+                            <div class="collection-count">
+                                <span>🌹</span>
+                                <span>20 essences rares</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Collection Décoration -->
+                    <div class="collection-card" onclick="showPage('products'); filterProducts('decoration');">
+                        <div class="collection-image">
+                            <img src="https://images.unsplash.com/photo-1578761499019-d6e9c5ea5b5e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Collection Décoration">
+                            <div class="collection-badge">Artisanal</div>
+                            <div class="collection-overlay">
+                                <button class="collection-cta">Découvrir la Collection</button>
+                            </div>
+                        </div>
+                        <div class="collection-info">
+                            <h3 class="collection-name">Art de Vivre</h3>
+                            <p class="collection-description">
+                                Objets d'art et de décoration qui transforment votre intérieur en 
+                                un véritable riad marocain. Zellige, fer forgé, cuir...
+                            </p>
+                            <div class="collection-count">
+                                <span>🏺</span>
+                                <span>15 pièces d'exception</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Story Section -->
+        <section class="story-section">
+            <div class="story-container">
+                <div class="story-content">
+                    <h2>L'Âme de l'Artisanat Berbère</h2>
+                    <p>
+                        Depuis trois générations, <span class="highlight">AMAZIR SHOP</span> perpétue la tradition millénaire 
+                        de l'artisanat berbère. Installés au cœur du mythique <span class="highlight">Souk Cherifia</span> 
+                        de Marrakech, nous sommes les gardiens d'un savoir-faire ancestral.
+                    </p>
+                    <p>
+                        Chaque matin, nos artisans partenaires travaillent dans leurs ateliers familiaux, 
+                        transmettant des techniques secrètes de mère en fille. Leurs mains expertes 
+                        donnent vie à des créations uniques, imprégnées de <span class="highlight">l'esprit du Maroc authentique</span>.
+                    </p>
+                    <p>
+                        Notre mission ? Faire découvrir au monde entier la beauté intemporelle 
+                        de cet héritage culturel, tout en assurant une rémunération équitable 
+                        à nos précieux artisans.
+                    </p>
+                </div>
+                <div class="story-image">
+                    <img src= "C:\Users\dell\Desktop\WhatsApp Image 2025-06-01 at 06.31.26_78cb94fe.jpg " alt="Artisan berbère au travail">
+                </div>
+            </div>
+        </section>
+
+        <!-- Trust Section -->
+        <section class="trust-section">
+            <div class="trust-container">
+                <h2 class="trust-title">Pourquoi choisir AMAZIR ?</h2>
+                <div class="trust-grid">
+                    <div class="trust-item">
+                        <div class="trust-icon">⭐</div>
+                        <h4>Excellence Reconnue</h4>
+                        <p>Note parfaite 5.0/5 basée sur plus de 1000 avis clients authentiques</p>
+                    </div>
+                    <div class="trust-item">
+                        <div class="trust-icon">🤝</div>
+                        <h4>Commerce Équitable</h4>
+                        <p>Partenariat direct avec 50+ artisans, rémunération juste garantie</p>
+                    </div>
+                    <div class="trust-item">
+                        <div class="trust-icon">🌍</div>
+                        <h4>Livraison Mondiale</h4>
+                        <p>Expédition sécurisée vers 50+ pays, emballage soigné inclus</p>
+                    </div>
+                    <div class="trust-item">
+                        <div class="trust-icon">🎯</div>
+                        <h4>Authenticité Garantie</h4>
+                        <p>Certificat d'origine et de qualité pour chaque création</p>
+                    </div>
+                </div>
+            </div>
+        </section>
     </div>
 
     <!-- PRODUCTS PAGE -->
@@ -933,80 +2408,202 @@
         <section class="products-section">
             <div class="section-header">
                 <h2>Nos Produits</h2>
-                <p>Une sélection raffinée d'artisanat marocain authentique</p>
+                <p>Une sélection raffinée d'artisanat marocain authentique, choisi avec passion pour sa qualité exceptionnelle</p>
+                
+                <!-- Search Bar for Products Page -->
+                <div class="search-container">
+                    <div class="search-icon">🔍</div>
+                    <input type="text" class="search-bar" placeholder="Rechercher dans nos produits..." id="productsSearchBar" oninput="searchProducts(this.value)">
+                    <div class="search-results" id="productsSearchResults"></div>
+                </div>
+            </div>
+            
+            <div class="products-filter">
+                <button class="filter-btn active" onclick="filterProducts('all')">Tous</button>
+                <button class="filter-btn" onclick="filterProducts('tapis')">Tapis</button>
+                <button class="filter-btn" onclick="filterProducts('parfums')">Parfums</button>
+                <button class="filter-btn" onclick="filterProducts('decoration')">Décoration</button>
             </div>
             
             <div class="products-grid" id="productsGrid">
-                <!-- Sample Products -->
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Tapis Berbère">
-                        <div class="product-badge">BESTSELLER</div>
-                        <div class="product-overlay">
-                            <button class="quick-view-btn">Voir Détails</button>
-                        </div>
-                    </div>
-                    <div class="product-info">
-                        <div class="product-category">TAPIS</div>
-                        <h3 class="product-title">Tapis Berbère Azilal</h3>
-                        <div class="product-rating">
-                            <div class="stars">⭐⭐⭐⭐⭐</div>
-                            <span class="rating-text">(24 avis)</span>
-                        </div>
-                        <p class="product-description">Tapis tissé à la main avec motifs géométriques traditionnels.</p>
-                        <div class="product-price">
-                            <span class="price">2,500 DH</span>
-                            <span class="old-price">3,200 DH</span>
-                        </div>
-                        <button class="buy-btn">Ajouter au Panier</button>
-                    </div>
-                </div>
+                <!-- Les produits seront générés par JavaScript -->
+            </div>
+        </section>
+    </div>
 
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="https://images.unsplash.com/photo-1594035910387-fea47794261f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Parfum Oud">
-                        <div class="product-badge">PREMIUM</div>
-                        <div class="product-overlay">
-                            <button class="quick-view-btn">Voir Détails</button>
-                        </div>
+    <!-- PRODUCT DETAIL PAGE -->
+    <div class="page" id="product-detail">
+        <section class="product-detail-section">
+            <div class="product-detail-container">
+                <div class="product-gallery">
+                    <div class="main-image">
+                        <img id="mainProductImage" src="" alt="">
                     </div>
-                    <div class="product-info">
-                        <div class="product-category">PARFUMS</div>
-                        <h3 class="product-title">Parfum Oud Royal</h3>
-                        <div class="product-rating">
-                            <div class="stars">⭐⭐⭐⭐⭐</div>
-                            <span class="rating-text">(31 avis)</span>
-                        </div>
-                        <p class="product-description">Parfum d'exception à base d'oud authentique et d'ambre.</p>
-                        <div class="product-price">
-                            <span class="price">1,200 DH</span>
-                        </div>
-                        <button class="buy-btn">Ajouter au Panier</button>
+                    <div class="thumbnail-gallery" id="thumbnailGallery">
+                        <!-- Thumbnails seront générées par JavaScript -->
                     </div>
                 </div>
+                
+                <div class="product-detail-info">
+                    <div class="breadcrumb">
+                        <a onclick="showPage('home')">Accueil</a> / 
+                        <a onclick="showPage('products')">Produits</a> / 
+                        <span id="productBreadcrumb"></span>
+                    </div>
+                    
+                    <h1 class="product-detail-title" id="productDetailTitle"></h1>
+                    
+                    <div class="product-detail-rating">
+                        <div class="stars" id="productDetailStars"></div>
+                        <span class="rating-text" id="productDetailRating"></span>
+                    </div>
+                    
+                    <div class="product-detail-price">
+                        <span class="current-price" id="productDetailPrice"></span>
+                        <span class="original-price" id="productDetailOriginalPrice"></span>
+                        <span class="discount-badge" id="productDetailDiscount"></span>
+                    </div>
+                    
+                    <div class="product-features">
+                        <h4>Caractéristiques du produit</h4>
+                        <ul class="features-list" id="productFeatures">
+                            <!-- Features seront générées par JavaScript -->
+                        </ul>
+                    </div>
+                    
+                    <p class="product-description" id="productDetailDescription"></p>
+                    
+                    <div class="quantity-selector">
+                        <span class="quantity-label">Quantité :</span>
+                        <div class="quantity-controls">
+                            <button class="quantity-btn" onclick="changeQuantity(-1)">-</button>
+                            <input type="number" class="quantity-input" id="productQuantity" value="1" min="1" readonly>
+                            <button class="quantity-btn" onclick="changeQuantity(1)">+</button>
+                        </div>
+                    </div>
+                    
+                    <div class="product-actions">
+                        <button class="add-to-cart-btn" onclick="addToCartFromDetail()">
+                            🛒 Ajouter au Panier
+                        </button>
+                        <button class="buy-now-btn" onclick="buyNowFromDetail()">
+                            Acheter Maintenant
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
 
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="https://images.unsplash.com/photo-1578761499019-d6e9c5ea5b5e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Lanterne Marocaine">
-                        <div class="product-badge">ARTISANAL</div>
-                        <div class="product-overlay">
-                            <button class="quick-view-btn">Voir Détails</button>
-                        </div>
-                    </div>
-                    <div class="product-info">
-                        <div class="product-category">DÉCORATION</div>
-                        <h3 class="product-title">Lanterne Marocaine</h3>
-                        <div class="product-rating">
-                            <div class="stars">⭐⭐⭐⭐⭐</div>
-                            <span class="rating-text">(19 avis)</span>
-                        </div>
-                        <p class="product-description">Lanterne en métal ciselé et verre coloré, fabrication artisanale de Fès.</p>
-                        <div class="product-price">
-                            <span class="price">450 DH</span>
-                        </div>
-                        <button class="buy-btn">Ajouter au Panier</button>
-                    </div>
+    <!-- CART PAGE -->
+    <div class="page" id="cart">
+        <section class="cart-section">
+            <div class="cart-container">
+                <div class="cart-header">
+                    <h2>Mon Panier</h2>
+                    <p>Gérez vos articles et procédez au paiement</p>
                 </div>
+                
+                <div id="cartContent">
+                    <!-- Le contenu du panier sera généré par JavaScript -->
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- PAYMENT PAGE -->
+    <div class="page" id="payment">
+        <section class="payment-section">
+            <div class="payment-container">
+                <div class="payment-header">
+                    <h2>Finaliser la Commande</h2>
+                    <p>Saisissez vos informations de paiement en toute sécurité</p>
+                </div>
+                
+                <form class="payment-form" id="paymentForm" onsubmit="processPayment(event)">
+                    <div class="form-section">
+                        <h3>
+                            <span class="form-section-icon">📍</span>
+                            Adresse de Livraison
+                        </h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="firstName">Prénom *</label>
+                                <input type="text" id="firstName" name="firstName" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="lastName">Nom *</label>
+                                <input type="text" id="lastName" name="lastName" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="address">Adresse complète *</label>
+                            <input type="text" id="address" name="address" required>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="city">Ville *</label>
+                                <input type="text" id="city" name="city" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="postalCode">Code Postal *</label>
+                                <input type="text" id="postalCode" name="postalCode" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="country">Pays *</label>
+                            <select id="country" name="country" required>
+                                <option value="">Sélectionnez votre pays</option>
+                                <option value="MA">Maroc</option>
+                                <option value="FR">France</option>
+                                <option value="ES">Espagne</option>
+                                <option value="DE">Allemagne</option>
+                                <option value="IT">Italie</option>
+                                <option value="UK">Royaume-Uni</option>
+                                <option value="US">États-Unis</option>
+                                <option value="CA">Canada</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-section">
+                        <h3>
+                            <span class="form-section-icon">💳</span>
+                            Informations de Paiement
+                        </h3>
+                        <div class="form-group">
+                            <label for="cardNumber">Numéro de carte *</label>
+                            <input type="text" id="cardNumber" name="cardNumber" placeholder="1234 5678 9012 3456" required maxlength="19" oninput="formatCardNumber(this)">
+                            <div class="card-icons">
+                                <div class="card-icon visa">VISA</div>
+                                <div class="card-icon mastercard">MC</div>
+                                <div class="card-icon amex">AMEX</div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="cardName">Nom sur la carte *</label>
+                            <input type="text" id="cardName" name="cardName" required>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="expiryDate">Date d'expiration *</label>
+                                <input type="text" id="expiryDate" name="expiryDate" placeholder="MM/AA" required maxlength="5" oninput="formatExpiryDate(this)">
+                            </div>
+                            <div class="form-group">
+                                <label for="cvv">Code CVV *</label>
+                                <input type="text" id="cvv" name="cvv" placeholder="123" required maxlength="4" oninput="formatCVV(this)">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="order-summary-payment" id="orderSummaryPayment">
+                        <!-- Résumé de commande sera généré par JavaScript -->
+                    </div>
+                    
+                    <button type="submit" class="place-order-btn" id="placeOrderBtn">
+                        🔒 Finaliser la Commande
+                    </button>
+                </form>
             </div>
         </section>
     </div>
@@ -1020,6 +2617,29 @@
                     <p>AMAZIR SHOP est né de la passion pour l'artisanat berbère et du désir de faire découvrir au monde la richesse culturelle du Maroc. Installés au cœur du célèbre SOUK CHERIFIA de Marrakech, nous sommes les gardiens d'un savoir-faire ancestral.</p>
                     <p>Notre équipe sélectionne minutieusement chaque pièce directement auprès des artisans locaux, garantissant l'authenticité et la qualité exceptionnelle de nos produits. Nous croyons en un commerce équitable qui valorise le travail des artisans.</p>
                     <p>Avec une note parfaite de 5.0/5 basée sur plus de 500 avis clients, nous nous engageons à offrir une expérience d'achat exceptionnelle, que ce soit en boutique ou à travers notre service de livraison internationale.</p>
+                </div>
+                
+                <div class="about-features">
+                    <div class="about-feature">
+                        <div class="about-feature-icon">🏺</div>
+                        <h4>Artisanat Authentique</h4>
+                        <p>Sélection directe auprès des artisans locaux de Marrakech et des environs</p>
+                    </div>
+                    <div class="about-feature">
+                        <div class="about-feature-icon">⭐</div>
+                        <h4>Qualité Garantie</h4>
+                        <p>Note parfaite 5.0/5 basée sur plus de 500 avis clients vérifiés</p>
+                    </div>
+                    <div class="about-feature">
+                        <div class="about-feature-icon">🌍</div>
+                        <h4>Livraison Mondiale</h4>
+                        <p>Expédition internationale sécurisée vers plus de 50 pays</p>
+                    </div>
+                    <div class="about-feature">
+                        <div class="about-feature-icon">🤝</div>
+                        <h4>Commerce Équitable</h4>
+                        <p>Partenariat direct avec les artisans, rémunération juste</p>
+                    </div>
                 </div>
             </div>
         </section>
@@ -1048,7 +2668,7 @@
                         <div class="contact-detail">
                             <h4>Téléphone & WhatsApp</h4>
                             <p><a href="tel:+212644441574">+212 644-441574</a><br>
-                            <a href="https://wa.me/212644441574" target="_blank">💬 WhatsApp</a></p>
+                            <a href="https://wa.me/212644441574" target="_blank">💬 Contactez-nous sur WhatsApp</a></p>
                         </div>
                     </div>
 
@@ -1056,31 +2676,99 @@
                         <div class="contact-icon">📧</div>
                         <div class="contact-detail">
                             <h4>Email</h4>
-                            <p><a href="mailto:contact@amazirshop.ma">contact@amazirshop.ma</a></p>
+                            <p><a href="mailto:contact@amazirshop.ma">contact@amazirshop.ma</a><br>
+                            <a href="mailto:info@amazirshop.com">info@amazirshop.com</a></p>
                         </div>
                     </div>
 
                     <div class="contact-item">
                         <div class="contact-icon">🕒</div>
                         <div class="contact-detail">
-                            <h4>Horaires</h4>
-                            <p>Lundi - Samedi: 9h00 - 18h00<br>Dimanche: Fermé</p>
+                            <h4>Horaires d'ouverture</h4>
+                            <p>Lundi - Samedi: 9h00 - 18h00<br>Dimanche: Fermé<br><small style="color: #ff6b6b;">Actuellement fermé - Ouverture à 9h lundi</small></p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon">🌐</div>
+                        <div class="contact-detail">
+                            <h4>Site Web & Réseaux</h4>
+                            <p>www.amazirshop.com<br>Suivez-nous sur Instagram & Facebook</p>
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
-    </div>
 
-    <!-- CART PAGE -->
-    <div class="page" id="cart">
-        <section class="products-section">
-            <div class="section-header">
-                <h2>Mon Panier</h2>
-                <p>Votre panier est vide</p>
-                <button class="hero-cta-primary" onclick="showPage('products')" style="margin-top: 2rem;">
-                    Découvrir nos Produits
-                </button>
+                <div class="contact-form">
+                    <div class="form-header">
+                        <h3>Envoyez-nous un message</h3>
+                        <p>Nous vous répondrons dans les plus brefs délais</p>
+                    </div>
+                    
+                    <form id="contactForm" onsubmit="submitContactForm(event)">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="contactFirstName">Prénom *</label>
+                                <input type="text" id="contactFirstName" name="firstName" required placeholder="Votre prénom">
+                            </div>
+                            <div class="form-group">
+                                <label for="contactLastName">Nom *</label>
+                                <input type="text" id="contactLastName" name="lastName" required placeholder="Votre nom">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="contactEmail">Adresse Email *</label>
+                            <input type="email" id="contactEmail" name="email" required placeholder="votre.email@exemple.com">
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="contactPhone">Téléphone</label>
+                                <input type="tel" id="contactPhone" name="phone" placeholder="+212 6XX XXX XXX">
+                            </div>
+                            <div class="form-group">
+                                <label for="contactCountry">Pays</label>
+                                <input type="text" id="contactCountry" name="country" placeholder="Votre pays">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="contactSubject">Sujet de votre message *</label>
+                            <select id="contactSubject" name="subject" required>
+                                <option value="">Choisissez un sujet</option>
+                                <option value="information-produit">Information sur un produit</option>
+                                <option value="demande-devis">Demande de devis</option>
+                                <option value="commande-personnalisee">Commande personnalisée</option>
+                                <option value="livraison">Questions sur la livraison</option>
+                                <option value="collaboration">Proposition de collaboration</option>
+                                <option value="autre">Autre</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="contactMessage">Votre Message *</label>
+                            <textarea id="contactMessage" name="message" required placeholder="Décrivez votre demande en détail... N'hésitez pas à mentionner les produits qui vous intéressent, vos besoins spécifiques, ou toute question que vous pourriez avoir." style="height: 120px; resize: vertical;"></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer;">
+                                <input type="checkbox" required style="width: auto;">
+                                <span>J'accepte que mes données soient utilisées pour répondre à ma demande *</span>
+                            </label>
+                        </div>
+
+                        <div class="form-group">
+                            <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer;">
+                                <input type="checkbox" style="width: auto;">
+                                <span>Je souhaite recevoir les actualités et offres spéciales d'AMAZIR SHOP</span>
+                            </label>
+                        </div>
+
+                        <button type="submit" class="submit-btn" id="contactSubmitBtn">
+                            Envoyer le Message
+                        </button>
+                    </form>
+                </div>
             </div>
         </section>
     </div>
@@ -1092,9 +2780,9 @@
                 <h4>AMAZIR SHOP</h4>
                 <p>Découvrez l'authenticité de l'artisanat berbère depuis le cœur de Marrakech. Chaque pièce raconte une histoire, chaque création porte l'âme du Maroc.</p>
                 <div class="social-links">
-                    <a href="https://wa.me/212644441574" class="social-link" target="_blank">💬</a>
-                    <a href="#" class="social-link" target="_blank">📘</a>
-                    <a href="#" class="social-link" target="_blank">📷</a>
+                    <a href="https://wa.me/212644441574" class="social-link whatsapp" target="_blank">💬</a>
+                    <a href="#" class="social-link facebook" target="_blank">📘</a>
+                    <a href="#" class="social-link instagram" target="_blank">📷</a>
                 </div>
             </div>
 
@@ -1105,6 +2793,16 @@
                     <li><a onclick="showPage('products')">Nos Produits</a></li>
                     <li><a onclick="showPage('about')">À Propos</a></li>
                     <li><a onclick="showPage('contact')">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h4>Nos Produits</h4>
+                <ul class="footer-links">
+                    <li><a href="#" onclick="showPage('products')">Tapis Berbères</a></li>
+                    <li><a href="#" onclick="showPage('products')">Parfums Naturels</a></li>
+                    <li><a href="#" onclick="showPage('products')">Décoration Maison</a></li>
+                    <li><a href="#" onclick="showPage('products')">Cosmétiques Bio</a></li>
                 </ul>
             </div>
 
@@ -1122,11 +2820,855 @@
     </footer>
 
     <script>
-        // Global variables
+        // Variables globales
         let currentPage = 'home';
         let cart = [];
+        let countdownInterval;
+        let currentProduct = null;
 
-        // Navigation between pages
+        // Base de données des produits étendue
+        const products = [
+            // TAPIS (15+ produits)
+            {
+                id: 1,
+                name: 'Tapis Berbère Azilal',
+                category: 'tapis',
+                price: 2500,
+                originalPrice: 3200,
+                image: 'image amazir/s/WhatsApp Image 2025-04-17 at 02.52.34_aeef994c.jpg',
+                images: [
+                    'image amazir/s/WhatsApp Image 2025-04-17 at 02.52.35_09509c25.jpg',
+                    'image amazir/s/WhatsApp Image 2025-04-17 at 02.52.36_db785af4.jpg',
+                    'image amazir/s/WhatsApp Image 2025-04-17 at 02.52.39_3b78187c.jpg'
+                ],
+                rating: 5,
+                reviews: 24,
+                badge: 'BESTSELLER',
+                description: 'Tapis tissé à la main avec motifs géométriques traditionnels. Pièce unique aux couleurs vibrantes et authentiques.',
+                features: ['Tissé à la main', 'Dimensions: 200x150cm', 'Laine 100% naturelle', 'Motifs géométriques berbères', 'Pièce unique']
+            },
+            {
+                id: 2,
+                name: 'Tapis “Tislit n Wadrar',
+                category: 'tapis',
+                price: 1800,
+                originalPrice: null,
+                image: 'image amazir/1 Tapis Beni Ouarain – “Tislit n Wadrar”/WhatsApp Image 2025-04-16 at 17.59.44_3d23d79f.jpg',
+                images: [
+                    'image amazir/1 Tapis Beni Ouarain – “Tislit n Wadrar”/WhatsApp Image 2025-04-16 at 17.59.45_9e4c5f55.jpg',
+                    'image amazir/1 Tapis Beni Ouarain – “Tislit n Wadrar”/WhatsApp Image 2025-04-17 at 02.53.18_717c3179.jpg'
+                ],
+                rating: 5,
+                reviews: 18,
+                badge: 'ÉCO-RESPONSABLE',
+                description: ' Ce tapis Beni Ouarain n’est pas qu’un simple objet décoratif, c’est une carte poétique des montagnes du Maroc.Son fond blanc naturel est traversé par une ligne noire profonde, comme un chemin ancestral.Les trous tissés en forme de montagnes racontent les sommets, les silences, et la force de la nature berbère.Chaque détail est pensé pour évoquer les reliefs majestueux de l’AtlasTapis coloré en tissus recyclés, technique traditionnelle berbère respectueuse de l\'environnement.',
+                features: ['Tissus recyclés', 'Dimensions: 260x150 cm', 'Technique écologique', 'Couleurs vibrantes', 'Artisanat durable']
+            },
+            {
+                id: 3,
+                name: 'Tapis Kilim Vintage',
+                category: 'tapis',
+                price: 3200,
+                originalPrice: 4000,
+                image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                images: [
+                    'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
+                ],
+                rating: 5,
+                reviews: 31,
+                badge: 'VINTAGE',
+                description: 'Tapis kilim authentique des années 1960, restauré avec soin par nos artisans.',
+                features: ['Pièce vintage authentique', 'Dimensions: 250x200cm', 'Restauré à la main', 'Motifs traditionnels', 'Certificat d\'authenticité']
+            },
+            {
+                id: 4,
+                name: 'Tapis Beni Ourain Blanc',
+                category: 'tapis',
+                price: 4500,
+                originalPrice: null,
+                image: 'https://images.unsplash.com/photo-1513694203232-719a280e022f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                images: [
+                    'https://images.unsplash.com/photo-1513694203232-719a280e022f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
+                ],
+                rating: 5,
+                reviews: 42,
+                badge: 'PREMIUM',
+                description: 'Tapis Beni Ourain en laine d\'agneau, symbole du luxe berbère marocain.',
+                features: ['Laine d\'agneau premium', 'Dimensions: 300x200cm', 'Motifs losanges noirs', 'Épaisseur 3cm', 'Origine certifiée Moyen Atlas']
+            },
+            {
+                id: 5,
+                name: 'Tapis Boujaad Rose',
+                category: 'tapis',
+                price: 2800,
+                originalPrice: 3500,
+                image: 'https://images.unsplash.com/photo-1600566753151-384129cf4e3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                images: [
+                    'https://images.unsplash.com/photo-1600566753151-384129cf4e3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
+                ],
+                rating: 4,
+                reviews: 27,
+                badge: 'NOUVEAU',
+                description: 'Tapis Boujaad aux tons roses délicats, parfait pour une décoration moderne.',
+                features: ['Couleurs roses naturelles', 'Dimensions: 200x140cm', 'Laine locale', 'Teintures végétales', 'Style contemporain']
+            },
+            {
+                id: 6,
+                name: 'Tapis Mrirt Berbère',
+                category: 'tapis',
+                price: 3800,
+                originalPrice: null,
+                image: 'https://images.unsplash.com/photo-1551698618-1dfe5d97d256?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                images: [
+                    'https://images.unsplash.com/photo-1551698618-1dfe5d97d256?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
+                ],
+                rating: 5,
+                reviews: 33,
+                badge: 'ARTISANAL',
+                description: 'Tapis Mrirt aux motifs tribaux complexes, tissé par les femmes berbères.',
+                features: ['Motifs tribaux uniques', 'Dimensions: 220x160cm', 'Laine pure', 'Technique ancestrale', 'Temps de tissage: 3 mois']
+            },
+            {
+                id: 7,
+                name: 'Tapis Zanafi Noir et Blanc',
+                category: 'tapis',
+                price: 2200,
+                originalPrice: null,
+                image: 'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                images: [
+                    'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
+                ],
+                rating: 4,
+                reviews: 19,
+                badge: 'MODERNE',
+                description: 'Tapis Zanafi au design minimaliste, idéal pour les intérieurs contemporains.',
+                features: ['Design minimaliste', 'Dimensions: 180x120cm', 'Contraste noir/blanc', 'Texture plate', 'Facile d\'entretien']
+            },
+            {
+                id: 8,
+                name: 'Tapis Berbère Multicolore',
+                category: 'tapis',
+                price: 3000,
+                originalPrice: 3800,
+                image: 'https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                images: [
+                    'https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
+                ],
+                rating: 5,
+                reviews: 28,
+                badge: 'POPULAIRE',
+                description: 'Tapis berbère aux couleurs éclatantes, symbole de joie et de festivité.',
+                features: ['Couleurs vives naturelles', 'Dimensions: 190x130cm', 'Motifs festifs', 'Laine teinte à la main', 'Esprit bohème']
+            },
+            {
+                id: 9,
+                name: 'Tapis Taznakht Rouge',
+                category: 'tapis',
+                price: 3500,
+                originalPrice: null,
+                image: 'https://images.unsplash.com/photo-1600585154526-990dced4db0d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                images: [
+                    'https://images.unsplash.com/photo-1600585154526-990dced4db0d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
+                ],
+                rating: 5,
+                reviews: 35,
+                badge: 'EXCLUSIF',
+                description: 'Tapis Taznakht rouge profond, trésor de l\'artisanat du Sud marocain.',
+                features: ['Rouge traditionnel', 'Dimensions: 240x180cm', 'Région de Taznakht', 'Motifs floraux', 'Qualité musée']
+            },
+            {
+                id: 10,
+                name: 'Tapis Berbère Enfant',
+                category: 'tapis',
+                price: 1200,
+                originalPrice: null,
+                image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                images: [
+                    'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
+                ],
+                rating: 5,
+                reviews: 22,
+                badge: 'ENFANT',
+                description: 'Petit tapis berbère parfait pour la chambre d\'enfant, couleurs douces.',
+                features: ['Format enfant', 'Dimensions: 120x80cm', 'Couleurs pastel', 'Hypoallergénique', 'Lavable']
+            },
+            {
+                id: 11,
+                name: 'Tapis Couloir Berbère',
+                category: 'tapis',
+                price: 1800,
+                originalPrice: 2200,
+                image: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                images: [
+                    'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
+                ],
+                rating: 4,
+                reviews: 16,
+                badge: 'PRATIQUE',
+                description: 'Tapis long format couloir, idéal pour les espaces étroits.',
+                features: ['Format couloir', 'Dimensions: 300x80cm', 'Antidérapant', 'Résistant passage', 'Motifs linéaires']
+            },
+            {
+                id: 12,
+                name: 'Tapis Berbère Rond',
+                category: 'tapis',
+                price: 2200,
+                originalPrice: null,
+                image: 'https://images.unsplash.com/photo-1600566753151-384129cf4e3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                images: [
+                    'https://images.unsplash.com/photo-1600566753151-384129cf4e3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
+                ],
+                rating: 5,
+                reviews: 29,
+                badge: 'UNIQUE',
+                description: 'Tapis berbère rond, pièce originale pour créer un point focal.',
+                features: ['Format rond unique', 'Diamètre: 200cm', 'Motifs radiaux', 'Centre mandala', 'Conversation piece']
+            },
+            {
+                id: 13,
+                name: 'Tapis Hanbel Rayé',
+                category: 'tapis',
+                price: 1500,
+                originalPrice: null,
+                image: 'https://images.unsplash.com/photo-1551698618-1dfe5d97d256?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                images: [
+                    'https://images.unsplash.com/photo-1551698618-1dfe5d97d256?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
+                ],
+                rating: 4,
+                reviews: 14,
+                badge: 'TRADITIONNEL',
+                description: 'Tapis Hanbel aux rayures traditionnelles, style nomade authentique.',
+                features: ['Rayures traditionnelles', 'Dimensions: 180x100cm', 'Style nomade', 'Laine et coton', 'Léger et durable']
+            },
+            {
+                id: 14,
+                name: 'Tapis Berbère XXL',
+                category: 'tapis',
+                price: 6500,
+                originalPrice: null,
+                image: 'https://images.unsplash.com/photo-1600585154526-990dced4db0d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                images: [
+                    'https://images.unsplash.com/photo-1600585154526-990dced4db0d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
+                ],
+                rating: 5,
+                reviews: 38,
+                badge: 'XXL',
+                description: 'Tapis berbère de très grande taille, pièce majestueuse pour grands espaces.',
+                features: ['Très grande taille', 'Dimensions: 400x300cm', 'Pièce majestueuse', 'Laine premium', 'Pour grands espaces']
+            },
+            {
+                id: 15,
+                name: 'Tapis Vintage Délavé',
+                category: 'tapis',
+                price: 2800,
+                originalPrice: 3400,
+                image: 'https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                images: [
+                    'https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
+                ],
+                rating: 4,
+                reviews: 21,
+                badge: 'VINTAGE',
+                description: 'Tapis berbère aux couleurs délavées, charme vintage intemporel.',
+                features: ['Effet délavé naturel', 'Dimensions: 200x150cm', 'Charme vintage', 'Couleurs atténuées', 'Patine authentique']
+            },
+            {
+                id: 16,
+                name: 'Tapis Berbère Luxe',
+                category: 'tapis',
+                price: 5200,
+                originalPrice: null,
+                image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                images: [
+                    'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
+                ],
+                rating: 5,
+                reviews: 45,
+                badge: 'LUXE',
+                description: 'Tapis berbère de luxe, finition soie et laine, qualité exceptionnelle.',
+                features: ['Finition soie', 'Dimensions: 250x200cm', 'Qualité exceptionnelle', 'Brillance naturelle', 'Collection prestige']
+            },
+
+            // PARFUMS (20+ produits)
+            {
+                id: 17,
+                name: 'Parfum Oud Royal',
+                category: 'parfums',
+                price: 1200,
+                originalPrice: null,
+                image: 'https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                images: [
+                    'https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
+                ],
+                rating: 5,
+                reviews: 31,
+                badge: 'PREMIUM',
+                description: 'Parfum d\'exception à base d\'oud authentique et d\'ambre. Notes boisées et orientales sophistiquées.',
+                features: ['Oud authentique', 'Flacon artisanal 50ml', 'Notes boisées', 'Longue tenue', 'Édition limitée']
+            },
+            {
+                id: 18,
+                name: 'Parfum Rose de Damas',
+                category: 'parfums',
+                price: 850,
+                originalPrice: null,
+                image: 'https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                images: [
+                    'https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
+                ],
+                rating: 5,
+                reviews: 27,
+                badge: 'BIO',
+                description: 'Essence pure de roses de Damas cultivées dans la vallée du Dadès.',
+                features: ['100% naturel', 'Roses de Damas', 'Flacon 30ml', 'Parfum délicat', 'Certification bio']
+            },
+            {
+                id: 19,
+                name: 'Huile Essentielle Argan',
+                category: 'parfums',
+                price: 350,
+                originalPrice: null,
+                image: 'https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                images: [
+                    'https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
+                ],
+                rating: 5,
+                reviews: 45,
+                badge: '100% NATUREL',
+                description: 'Huile d\'argan pure 100% bio, pressée à froid. Idéale pour le visage, les cheveux et le corps.',
+                features: ['Pressée à froid', 'Flacon 50ml', '100% bio', 'Multiples usages', 'Origine contrôlée']
+            },
+            {
+                id: 20,
+                name: 'Parfum Ambre Oriental',
+                category: 'parfums',
+                price: 950,
+                originalPrice: 1200,
+                image: 'https://images.unsplash.com/photo-1594035910387-fea47794261f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                images: [
+                    'https://images.unsplash.com/photo-1594035910387-fea47794261f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
+                ],
+                rating: 4,
+                reviews: 23,
+                badge: 'ORIENTAL',
+                description: 'Parfum à l\'ambre oriental chaleureux, notes de vanille et épices.',
+                features: ['Notes ambrées', 'Vanille naturelle', 'Épices orientales', 'Flacon 40ml', 'Unisexe']
+            },
+            {
+                id: 21,
+                name: 'Parfum Jasmin du Maroc',
+                category: 'parfums',
+                price: 750,
+                originalPrice: null,
+                image: 'https://images.unsplash.com/photo-1588159343745-445ae0b16383?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                images: [
+                    'https://images.unsplash.com/photo-1588159343745-445ae0b16383?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
+                ],
+                rating: 5,
+                reviews: 34,
+                badge: 'FLORAL',
+                description: 'Essence de jasmin du Maroc, parfum envoûtant et sensuel.',
+                features: ['Jasmin marocain', 'Parfum sensuel', 'Notes florales', 'Flacon 35ml', 'Récolte nocturne']
+            },
+            {
+                id: 22,
+                name: 'Eau de Cologne Menthe',
+                category: 'parfums',
+                price: 280,
+                originalPrice: null,
+                image: 'https://images.unsplash.com/photo-1556228720-195a672e8a03?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                images: [
+                    'https://images.unsplash.com/photo-1556228720-195a672e8a03?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
+                ],
+                rating: 4,
+                reviews: 19,
+                badge: 'FRAÎCHEUR',
+                description: 'Eau de cologne à la menthe fraîche, parfaite pour l\'été.',
+                features: ['Menthe fraîche', 'Effet rafraîchissant', 'Flacon 100ml', 'Usage quotidien', 'Prix accessible']
+            },
+            {
+                id: 23,
+                name: 'Parfum Santal Mystique',
+                category: 'parfums',
+                price: 1100,
+                originalPrice: null,
+                image: 'https://images.unsplash.com/photo-1615634260167-c8cdede054de?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                images: [
+                    'https://images.unsplash.com/photo-1615634260167-c8cdede054de?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
+                ],
+                rating: 5,
+                reviews: 28,
+                badge: 'MYSTIQUE',
+                description: 'Parfum au santal mystique, boisé et envoûtant.',
+                features: ['Santal authentique', 'Notes mystiques', 'Unisexe', 'Flacon 45ml', 'Méditation']
+            },
+            {
+                id: 24,
+                name: 'Huile de Cactus Figue',
+                category: 'parfums',
+                price: 650,
+                originalPrice: 800,
+                image: 'https://images.unsplash.com/photo-1612198188060-c7c2a3b66eae?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                images: [
+                    'https://images.unsplash.com/photo-1612198188060-c7c2a3b66eae?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
+                ],
+                rating: 5,
+                reviews: 41,
+                badge: 'RARE',
+                description: 'Huile précieuse de figue de Barbarie, trésor de beauté marocain.',
+                features: ['Figue de Barbarie', 'Anti-âge naturel', 'Très rare', 'Flacon 30ml', 'Extraction pure']
+            },
+            {
+                id: 25,
+                name: 'Parfum Neroli Orange',
+                category: 'parfums',
+                price: 820,
+                originalPrice: null,
+                image: 'https://images.unsplash.com/photo-1609205016011-9b81d8a3e91a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                images: [
+                    'https://images.unsplash.com/photo-1609205016011-9b81d8a3e91a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
+                ],
+                rating: 4,
+                reviews: 25,
+                badge: 'AGRUMES',
+                description: 'Parfum au néroli et fleur d\'oranger, fraîcheur méditerranéenne.',
+                features: ['Néroli premium', 'Fleur d\'oranger', 'Fraîcheur naturelle', 'Flacon 40ml', 'Printemps éternel']
+            },
+            {
+                id: 26,
+                name: 'Parfum Encens Sacré',
+                category: 'parfums',
+                price: 900,
+                originalPrice: null,
+                image: 'https://images.unsplash.com/photo-1610465299996-30f240ac2b1c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                images: [
+                    'https://images.unsplash.com/photo-1610465299996-30f240ac2b1c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
+                ],
+                rating: 5,
+                reviews: 32,
+                badge: 'SACRÉ',
+                description: 'Parfum à l\'encens sacré, spiritualité et sérénité.',
+                features: ['Encens authentique', 'Spiritualité', 'Notes sacrées', 'Flacon 35ml', 'Méditation profonde']
+            },
+            {
+                id: 27,
+                name: 'Parfum Cèdre Atlas',
+                category: 'parfums',
+                price: 1050,
+                originalPrice: null,
+                image: 'https://images.unsplash.com/photo-1615634260167-c8cdede054de?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                images: [
+                    'https://images.unsplash.com/photo-1615634260167-c8cdede054de?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
+                ],
+                rating: 5,
+                reviews: 29,
+                badge: 'ATLAS',
+                description: 'Parfum au cèdre de l\'Atlas, force et noblesse des montagnes.',
+                features: ['Cèdre de l\'Atlas', 'Notes boisées nobles', 'Masculin', 'Flacon 50ml', 'Caractère affirmé']
+            },
+            {
+                id: 28,
+                name: 'Parfum Lavande Sauvage',
+                category: 'parfums',
+                price: 450,
+                originalPrice: null,
+                image: 'https://images.unsplash.com/photo-1585761886668-0ab5b38b13d7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                images: [
+                    'https://images.unsplash.com/photo-1585761886668-0ab5b38b13d7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
+                ],
+                rating: 4,
+                reviews: 22,
+                badge: 'PROVENCE',
+                description: 'Parfum à la lavande sauvage, détente et bien-être.',
+                features: ['Lavande sauvage', 'Effet relaxant', 'Notes provençales', 'Flacon 40ml', 'Anti-stress naturel']
+            },
+            {
+                id: 29,
+                name: 'Parfum Musc Blanc',
+                category: 'parfums',
+                price: 780,
+                originalPrice: 950,
+                image: 'https://images.unsplash.com/photo-1614618851297-2c8c5c6d8ac6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                images: [
+                    'https://images.unsplash.com/photo-1614618851297-2c8c5c6d8ac6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
+                ],
+                rating: 4,
+                reviews: 26,
+                badge: 'DOUCEUR',
+                description: 'Parfum au musc blanc, douceur et sensualité raffinée.',
+                features: ['Musc blanc pur', 'Notes poudrées', 'Sensualité douce', 'Flacon 35ml', 'Élégance féminine']
+            },
+            {
+                id: 30,
+                name: 'Parfum Patchouli Noble',
+                category: 'parfums',
+                price: 920,
+                originalPrice: null,
+                image: 'https://images.unsplash.com/photo-1610465299996-30f240ac2b1c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                images: [
+                    'https://images.unsplash.com/photo-1610465299996-30f240ac2b1c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
+                ],
+                rating: 5,
+                reviews: 31,
+                badge: 'NOBLE',
+                description: 'Parfum au patchouli noble, charme bohème et sophistication.',
+                features: ['Patchouli premium', 'Charme bohème', 'Notes terreuses', 'Flacon 40ml', 'Personnalité forte']
+            },
+            {
+                id: 31,
+                name: 'Parfum Ylang-Ylang',
+                category: 'parfums',
+                price: 680,
+                originalPrice: null,
+                image: 'https://images.unsplash.com/photo-1588159343745-445ae0b16383?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                images: [
+                    'https://images.unsplash.com/photo-1588159343745-445ae0b16383?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
+                ],
+                rating: 4,
+                reviews: 24,
+                badge: 'EXOTIQUE',
+                description: 'Parfum à l\'ylang-ylang exotique, évasion tropicale garantie.',
+                features: ['Ylang-ylang authentique', 'Notes exotiques', 'Évasion tropicale', 'Flacon 35ml', 'Sensualité naturelle']
+            },
+            {
+                id: 32,
+                name: 'Parfum Bois de Oud Rare',
+                category: 'parfums',
+                price: 1800,
+                originalPrice: null,
+                image: 'https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                images: [
+                    'https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
+                ],
+                rating: 5,
+                reviews: 18,
+                badge: 'TRÈS RARE',
+                description: 'Parfum au bois de oud très rare, collection de luxe exceptionnelle.',
+                features: ['Oud très rare', 'Collection prestige', 'Flacon cristal', '50ml', 'Certificat authenticité']
+            },
+            {
+                id: 33,
+                name: 'Parfum Géranium Rose',
+                category: 'parfums',
+                price: 520,
+                originalPrice: null,
+                image: 'https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                images: [
+                    'https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
+                ],
+                rating: 4,
+                reviews: 20,
+                badge: 'JARDIN',
+                description: 'Parfum au géranium rose, fraîcheur du jardin marocain.',
+                features: ['Géranium rose', 'Fraîcheur jardin', 'Notes vertes', 'Flacon 40ml', 'Naturel et vivifiant']
+            },
+            {
+                id: 34,
+                name: 'Parfum Benjoin Vanille',
+                category: 'parfums',
+                price: 850,
+                originalPrice: 1000,
+                image: 'https://images.unsplash.com/photo-1594035910387-fea47794261f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                images: [
+                    'https://images.unsplash.com/photo-1594035910387-fea47794261f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
+                ],
+                rating: 5,
+                reviews: 30,
+                badge: 'GOURMAND',
+                description: 'Parfum benjoin vanille, douceur gourmande et réconfortante.',
+                features: ['Benjoin naturel', 'Vanille gourmande', 'Réconfortant', 'Flacon 45ml', 'Notes chaudes']
+            },
+            {
+                id: 35,
+                name: 'Parfum Menthe Bergamote',
+                category: 'parfums',
+                price: 380,
+                originalPrice: null,
+                image: 'https://images.unsplash.com/photo-1556228720-195a672e8a03?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                images: [
+                    'https://images.unsplash.com/photo-1556228720-195a672e8a03?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
+                ],
+                rating: 4,
+                reviews: 17,
+                badge: 'VIVIFIANT',
+                description: 'Parfum menthe bergamote, énergie et vitalité au quotidien.',
+                features: ['Menthe fraîche', 'Bergamote italienne', 'Énergie naturelle', 'Flacon 50ml', 'Usage matin']
+            },
+            {
+                id: 36,
+                name: 'Parfum Collection Royale',
+                category: 'parfums',
+                price: 2200,
+                originalPrice: null,
+                image: 'https://images.unsplash.com/photo-1610465299996-30f240ac2b1c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                images: [
+                    'https://images.unsplash.com/photo-1610465299996-30f240ac2b1c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
+                ],
+                rating: 5,
+                reviews: 15,
+                badge: 'ROYALE',
+                description: 'Parfum de la collection royale, essence de luxe et de raffinement.',
+                features: ['Collection exclusive', 'Flacon or 24k', 'Édition limitée', '30ml', 'Luxe absolu']
+            },
+
+            // DÉCORATION (15+ produits)
+            {
+                id: 37,
+                name: 'Pouf en Cuir Marocain',
+                category: 'decoration',
+                price: 750,
+                originalPrice: 950,
+                image: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                images: [
+                    'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
+                ],
+                rating: 5,
+                reviews: 22,
+                badge: 'ARTISANAL',
+                description: 'Pouf traditionnel en cuir véritable brodé à la main.',
+                features: ['Cuir véritable', 'Broderie main', 'Diamètre 50cm', 'Rembourrage naturel', 'Design authentique']
+            },
+            {
+                id: 38,
+                name: 'Lanterne Marocaine',
+                category: 'decoration',
+                price: 450,
+                originalPrice: null,
+                image: 'https://images.unsplash.com/photo-1578761499019-d6e9c5ea5b5e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                images: [
+                    'https://images.unsplash.com/photo-1578761499019-d6e9c5ea5b5e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
+                ],
+                rating: 5,
+                reviews: 19,
+                badge: 'FAIT MAIN',
+                description: 'Lanterne en métal ciselé et verre coloré, fabrication artisanale de Fès.',
+                features: ['Métal ciselé', 'Verre coloré', 'Hauteur 40cm', 'Artisanat de Fès', 'Éclairage d\'ambiance']
+            },
+            {
+                id: 39,
+                name: 'Miroir Soleil Doré',
+                category: 'decoration',
+                price: 850,
+                originalPrice: null,
+                image: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                images: [
+                    'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
+                ],
+                rating: 5,
+                reviews: 28,
+                badge: 'DÉCORATIF',
+                description: 'Miroir soleil en métal doré, pièce décorative majestueuse.',
+                features: ['Métal doré', 'Design soleil', 'Diamètre 80cm', 'Miroir central', 'Effet lumineux']
+            },
+            {
+                id: 40,
+                name: 'Coussin Berbère Coloré',
+                category: 'decoration',
+                price: 180,
+                originalPrice: 220,
+                image: 'https://images.unsplash.com/photo-1600566753151-384129cf4e3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                images: [
+                    'https://images.unsplash.com/photo-1600566753151-384129cf4e3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
+                ],
+                rating: 4,
+                reviews: 35,
+                badge: 'CONFORT',
+                description: 'Coussin berbère aux motifs colorés, confort et style.',
+                features: ['Tissage berbère', 'Motifs colorés', '50x50cm', 'Déhoussable', 'Garnissage plumes']
+            },
+            {
+                id: 41,
+                name: 'Plateau Thé Argent',
+                category: 'decoration',
+                price: 650,
+                originalPrice: null,
+                image: 'https://images.unsplash.com/photo-1573408301185-9146fe634ad0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                images: [
+                    'https://images.unsplash.com/photo-1573408301185-9146fe634ad0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
+                ],
+                rating: 5,
+                reviews: 24,
+                badge: 'TRADITION',
+                description: 'Plateau à thé en argent ciselé, tradition marocaine authentique.',
+                features: ['Argent massif', 'Ciselure main', 'Diamètre 40cm', 'Poinçon authenticité', 'Usage cérémonial']
+            },
+            {
+                id: 42,
+                name: 'Vase Tamegroute Vert',
+                category: 'decoration',
+                price: 320,
+                originalPrice: null,
+                image: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                images: [
+                    'https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
+                ],
+                rating: 4,
+                reviews: 16,
+                badge: 'CÉRAMIQUE',
+                description: 'Vase en céramique verte de Tamegroute, art ancestral du Sud.',
+                features: ['Céramique Tamegroute', 'Vert émeraude', 'Hauteur 30cm', 'Forme traditionnelle', 'Glaçure unique']
+            },
+            {
+                id: 43,
+                name: 'Chandelier Fer Forgé',
+                category: 'decoration',
+                price: 1200,
+                originalPrice: 1500,
+                image: 'https://images.unsplash.com/photo-1578761499019-d6e9c5ea5b5e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                images: [
+                    'https://images.unsplash.com/photo-1578761499019-d6e9c5ea5b5e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
+                ],
+                rating: 5,
+                reviews: 21,
+                badge: 'LUXE',
+                description: 'Chandelier en fer forgé, élégance et raffinement marocain.',
+                features: ['Fer forgé main', '6 branches', 'Hauteur 60cm', 'Finition antique', 'Style royal']
+            },
+            {
+                id: 44,
+                name: 'Tajine Décoratif',
+                category: 'decoration',
+                price: 280,
+                originalPrice: null,
+                image: 'https://images.unsplash.com/photo-1573408301185-9146fe634ad0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                images: [
+                    'https://images.unsplash.com/photo-1573408301185-9146fe634ad0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
+                ],
+                rating: 4,
+                reviews: 18,
+                badge: 'AUTHENTIQUE',
+                description: 'Tajine décoratif peint à la main, symbole de la cuisine marocaine.',
+                features: ['Céramique peinte', 'Motifs floraux', 'Diamètre 30cm', 'Décoratif uniquement', 'Couleurs vives']
+            },
+            {
+                id: 45,
+                name: 'Table Basse Mosaïque',
+                category: 'decoration',
+                price: 1800,
+                originalPrice: null,
+                image: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                images: [
+                    'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
+                ],
+                rating: 5,
+                reviews: 33,
+                badge: 'MOBILIER',
+                description: 'Table basse avec plateau en mosaïque artisanale, pièce unique.',
+                features: ['Mosaïque artisanale', '80x80cm', 'Pieds en fer', 'Plateau amovible', 'Pièce unique']
+            },
+            {
+                id: 46,
+                name: 'Suspension Murano',
+                category: 'decoration',
+                price: 950,
+                originalPrice: null,
+                image: 'https://images.unsplash.com/photo-1578761499019-d6e9c5ea5b5e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                images: [
+                    'https://images.unsplash.com/photo-1578761499019-d6e9c5ea5b5e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
+                ],
+                rating: 5,
+                reviews: 26,
+                badge: 'ÉCLAIRAGE',
+                description: 'Suspension en verre soufflé, éclairage moderne et élégant.',
+                features: ['Verre soufflé', 'Design moderne', 'Diamètre 40cm', 'Éclairage LED', 'Style contemporain']
+            },
+            {
+                id: 47,
+                name: 'Plaid Berbère Laine',
+                category: 'decoration',
+                price: 420,
+                originalPrice: 520,
+                image: 'https://images.unsplash.com/photo-1600566753151-384129cf4e3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                images: [
+                    'https://images.unsplash.com/photo-1600566753151-384129cf4e3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
+                ],
+                rating: 4,
+                reviews: 29,
+                badge: 'CHALEUR',
+                description: 'Plaid en laine berbère, chaleur et douceur pour l\'hiver.',
+                features: ['Laine berbère', '150x200cm', 'Tissage traditionnel', 'Très chaud', 'Rayures naturelles']
+            },
+            {
+                id: 48,
+                name: 'Horloge Zellige Bleue',
+                category: 'decoration',
+                price: 380,
+                originalPrice: null,
+                image: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                images: [
+                    'https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
+                ],
+                rating: 4,
+                reviews: 22,
+                badge: 'ZELLIGE',
+                description: 'Horloge murale en zellige bleu, art de Fès intemporel.',
+                features: ['Zellige de Fès', 'Bleu cobalt', 'Diamètre 35cm', 'Mécanisme silencieux', 'Artisanat noble']
+            },
+            {
+                id: 49,
+                name: 'Statue Berbère Bronze',
+                category: 'decoration',
+                price: 1500,
+                originalPrice: null,
+                image: 'https://images.unsplash.com/photo-1573408301185-9146fe634ad0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                images: [
+                    'https://images.unsplash.com/photo-1573408301185-9146fe634ad0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
+                ],
+                rating: 5,
+                reviews: 14,
+                badge: 'ART',
+                description: 'Statue berbère en bronze, art traditionnel et modernité.',
+                features: ['Bronze massif', 'Hauteur 40cm', 'Patine naturelle', 'Sculpture d\'art', 'Certificat artiste']
+            },
+            {
+                id: 50,
+                name: 'Paravent Bois Sculpté',
+                category: 'decoration',
+                price: 2200,
+                originalPrice: 2800,
+                image: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                images: [
+                    'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
+                ],
+                rating: 5,
+                reviews: 19,
+                badge: 'SCULPTURE',
+                description: 'Paravent en bois sculpté, séparation élégante et artistique.',
+                features: ['Bois sculpté main', '3 panneaux', 'Hauteur 180cm', 'Motifs géométriques', 'Cloison mobile']
+            },
+            {
+                id: 51,
+                name: 'Fontaine Intérieure Zellige',
+                category: 'decoration',
+                price: 3500,
+                originalPrice: null,
+                image: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                images: [
+                    'https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
+                ],
+                rating: 5,
+                reviews: 12,
+                badge: 'PRESTIGE',
+                description: 'Fontaine d\'intérieur en zellige, sérénité et raffinement.',
+                features: ['Zellige artisanal', 'Pompe silencieuse', 'Hauteur 120cm', 'Éclairage LED', 'Zen et relaxant']
+            }
+        ];
+
+        // Fonctions utilitaires
+        function generateStars(rating) {
+            return '⭐'.repeat(rating);
+        }
+
+        function formatPrice(price) {
+            return price.toLocaleString() + ' DH';
+        }
+
+        function calculateDiscount(originalPrice, currentPrice) {
+            if (!originalPrice) return null;
+            return Math.round(((originalPrice - currentPrice) / originalPrice) * 100);
+        }
+
+        // Navigation entre pages
         function showPage(pageId) {
             const pages = document.querySelectorAll('.page');
             pages.forEach(page => page.classList.remove('active'));
@@ -1135,17 +3677,473 @@
             if (targetPage) {
                 targetPage.classList.add('active');
                 currentPage = pageId;
+                window.history.pushState({page: pageId}, '', `#${pageId}`);
                 window.scrollTo({top: 0, behavior: 'smooth'});
+                closeMobileMenu();
+                
+                // Initialiser le contenu spécifique de la page
+                if (pageId === 'products') {
+                    renderProducts();
+                } else if (pageId === 'cart') {
+                    renderCart();
+                } else if (pageId === 'payment') {
+                    renderOrderSummary();
+                }
             }
         }
 
-        // Mobile menu toggle
-        function toggleMobileMenu() {
-            // Mobile menu functionality can be added here
-            console.log('Mobile menu toggled');
+        // Affichage des produits
+        function renderProducts(filteredProducts = products) {
+            const productsGrid = document.getElementById('productsGrid');
+            productsGrid.innerHTML = '';
+            
+            filteredProducts.forEach(product => {
+                const discount = calculateDiscount(product.originalPrice, product.price);
+                const productCard = document.createElement('div');
+                productCard.className = 'product-card';
+                productCard.setAttribute('data-category', product.category);
+                
+                productCard.innerHTML = `
+                    <div class="product-image">
+                        <img src="${product.image}" alt="${product.name}">
+                        <div class="product-badge">${product.badge}</div>
+                        <div class="product-overlay">
+                            <button class="quick-view-btn" onclick="showProductDetail(${product.id})">Voir Détails</button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">${product.category.toUpperCase()}</div>
+                        <h3 class="product-title">${product.name}</h3>
+                        <div class="product-rating">
+                            <div class="stars">${generateStars(product.rating)}</div>
+                            <span class="rating-text">(${product.reviews} avis)</span>
+                        </div>
+                        <p class="product-description">${product.description}</p>
+                        <div class="product-price">
+                            <span class="price">${formatPrice(product.price)}</span>
+                            ${product.originalPrice ? `<span class="old-price">${formatPrice(product.originalPrice)}</span>` : ''}
+                        </div>
+                        <button class="buy-btn" onclick="addToCart(${product.id})">
+                            Ajouter au Panier
+                        </button>
+                    </div>
+                `;
+                
+                productsGrid.appendChild(productCard);
+            });
         }
 
-        // Notification system
+        // Affichage des détails du produit
+        function showProductDetail(productId) {
+            const product = products.find(p => p.id === productId);
+            if (!product) return;
+            
+            currentProduct = product;
+            
+            // Mettre à jour les éléments de la page
+            document.getElementById('mainProductImage').src = product.images[0];
+            document.getElementById('productBreadcrumb').textContent = product.name;
+            document.getElementById('productDetailTitle').textContent = product.name;
+            document.getElementById('productDetailStars').textContent = generateStars(product.rating);
+            document.getElementById('productDetailRating').textContent = `(${product.reviews} avis)`;
+            document.getElementById('productDetailPrice').textContent = formatPrice(product.price);
+            document.getElementById('productDetailDescription').textContent = product.description;
+            
+            if (product.originalPrice) {
+                document.getElementById('productDetailOriginalPrice').textContent = formatPrice(product.originalPrice);
+                document.getElementById('productDetailOriginalPrice').style.display = 'inline';
+                const discount = calculateDiscount(product.originalPrice, product.price);
+                document.getElementById('productDetailDiscount').textContent = `-${discount}%`;
+                document.getElementById('productDetailDiscount').style.display = 'inline';
+            } else {
+                document.getElementById('productDetailOriginalPrice').style.display = 'none';
+                document.getElementById('productDetailDiscount').style.display = 'none';
+            }
+            
+            // Mettre à jour les caractéristiques
+            const featuresContainer = document.getElementById('productFeatures');
+            featuresContainer.innerHTML = '';
+            product.features.forEach(feature => {
+                const li = document.createElement('li');
+                li.textContent = feature;
+                featuresContainer.appendChild(li);
+            });
+            
+            // Mettre à jour la galerie d'images
+            const thumbnailGallery = document.getElementById('thumbnailGallery');
+            thumbnailGallery.innerHTML = '';
+            product.images.forEach((image, index) => {
+                const thumbnail = document.createElement('div');
+                thumbnail.className = `thumbnail ${index === 0 ? 'active' : ''}`;
+                thumbnail.innerHTML = `<img src="${image}" alt="${product.name}">`;
+                thumbnail.onclick = () => {
+                    document.getElementById('mainProductImage').src = image;
+                    document.querySelectorAll('.thumbnail').forEach(t => t.classList.remove('active'));
+                    thumbnail.classList.add('active');
+                };
+                thumbnailGallery.appendChild(thumbnail);
+            });
+            
+            // Réinitialiser la quantité
+            document.getElementById('productQuantity').value = 1;
+            
+            showPage('product-detail');
+        }
+
+        // Gestion de la quantité dans les détails du produit
+        function changeQuantity(delta) {
+            const quantityInput = document.getElementById('productQuantity');
+            const currentValue = parseInt(quantityInput.value);
+            const newValue = Math.max(1, currentValue + delta);
+            quantityInput.value = newValue;
+        }
+
+        // Ajouter au panier depuis la liste des produits
+        function addToCart(productId) {
+            const product = products.find(p => p.id === productId);
+            if (!product) return;
+            
+            const existingItem = cart.find(item => item.id === productId);
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({
+                    id: product.id,
+                    name: product.name,
+                    price: product.price,
+                    image: product.image,
+                    category: product.category,
+                    quantity: 1
+                });
+            }
+            
+            updateCartCounter();
+            showNotification(`✅ ${product.name} ajouté au panier!`, 'success');
+            
+            // Messages promotionnels
+            if (cart.length === 2) {
+                setTimeout(() => {
+                    showNotification('🎯 Ajoutez un produit de plus pour la livraison gratuite!', 'info');
+                }, 2000);
+            } else if (cart.length === 3) {
+                setTimeout(() => {
+                    showNotification('🎊 Félicitations! Livraison gratuite débloquée!', 'success');
+                }, 2000);
+            }
+        }
+
+        // Ajouter au panier depuis les détails du produit
+        function addToCartFromDetail() {
+            if (!currentProduct) return;
+            
+            const quantity = parseInt(document.getElementById('productQuantity').value);
+            const existingItem = cart.find(item => item.id === currentProduct.id);
+            
+            if (existingItem) {
+                existingItem.quantity += quantity;
+            } else {
+                cart.push({
+                    id: currentProduct.id,
+                    name: currentProduct.name,
+                    price: currentProduct.price,
+                    image: currentProduct.image,
+                    category: currentProduct.category,
+                    quantity: quantity
+                });
+            }
+            
+            updateCartCounter();
+            showNotification(`✅ ${quantity}x ${currentProduct.name} ajouté au panier!`, 'success');
+        }
+
+        // Acheter maintenant depuis les détails du produit
+        function buyNowFromDetail() {
+            addToCartFromDetail();
+            showPage('cart');
+        }
+
+        // Mettre à jour le compteur du panier
+        function updateCartCounter() {
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            document.getElementById('cartCounter').textContent = totalItems;
+            document.getElementById('mobileCartCount').textContent = totalItems;
+        }
+
+        // Affichage du panier
+        function renderCart() {
+            const cartContent = document.getElementById('cartContent');
+            
+            if (cart.length === 0) {
+                cartContent.innerHTML = `
+                    <div class="empty-cart">
+                        <div class="empty-cart-icon">🛒</div>
+                        <h3>Votre panier est vide</h3>
+                        <p>Découvrez nos magnifiques produits artisanaux</p>
+                        <button class="cta-button" onclick="showPage('products')">
+                            Voir nos Produits
+                        </button>
+                    </div>
+                `;
+                return;
+            }
+            
+            const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            const shipping = subtotal >= 500 ? 0 : 50;
+            const total = subtotal + shipping;
+            
+            cartContent.innerHTML = `
+                <div class="cart-content">
+                    <div class="cart-items">
+                        <h3>Articles dans votre panier</h3>
+                        ${cart.map(item => `
+                            <div class="cart-item">
+                                <div class="cart-item-image">
+                                    <img src="${item.image}" alt="${item.name}">
+                                </div>
+                                <div class="cart-item-details">
+                                    <h4 class="cart-item-title">${item.name}</h4>
+                                    <p class="cart-item-category">${item.category.toUpperCase()}</p>
+                                    <p class="cart-item-price">${formatPrice(item.price)}</p>
+                                </div>
+                                <div class="cart-item-controls">
+                                    <div class="cart-quantity-controls">
+                                        <button class="cart-quantity-btn" onclick="updateCartItemQuantity(${item.id}, -1)">-</button>
+                                        <span class="cart-quantity-display">${item.quantity}</span>
+                                        <button class="cart-quantity-btn" onclick="updateCartItemQuantity(${item.id}, 1)">+</button>
+                                    </div>
+                                    <button class="remove-item-btn" onclick="removeFromCart(${item.id})">
+                                        Supprimer
+                                    </button>
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                    
+                    <div class="cart-summary">
+                        <h3 class="summary-title">Résumé de la commande</h3>
+                        <div class="summary-row">
+                            <span>Sous-total:</span>
+                            <span>${formatPrice(subtotal)}</span>
+                        </div>
+                        <div class="summary-row">
+                            <span>Livraison:</span>
+                            <span>${shipping === 0 ? 'Gratuite' : formatPrice(shipping)}</span>
+                        </div>
+                        ${shipping === 0 ? '<p style="color: var(--primary-gold); font-size: 0.9rem; margin: 1rem 0;">🎉 Livraison gratuite débloquée!</p>' : ''}
+                        <div class="summary-row total">
+                            <span>Total:</span>
+                            <span>${formatPrice(total)}</span>
+                        </div>
+                        <button class="checkout-btn" onclick="showPage('payment')">
+                            Procéder au Paiement
+                        </button>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Mettre à jour la quantité d'un article du panier
+        function updateCartItemQuantity(productId, delta) {
+            const item = cart.find(item => item.id === productId);
+            if (!item) return;
+            
+            item.quantity += delta;
+            
+            if (item.quantity <= 0) {
+                removeFromCart(productId);
+                return;
+            }
+            
+            updateCartCounter();
+            renderCart();
+        }
+
+        // Supprimer un article du panier
+        function removeFromCart(productId) {
+            const itemIndex = cart.findIndex(item => item.id === productId);
+            if (itemIndex > -1) {
+                const item = cart[itemIndex];
+                cart.splice(itemIndex, 1);
+                updateCartCounter();
+                renderCart();
+                showNotification(`❌ ${item.name} retiré du panier`, 'info');
+            }
+        }
+
+        // Affichage du résumé de commande dans la page de paiement
+        function renderOrderSummary() {
+            const orderSummaryContainer = document.getElementById('orderSummaryPayment');
+            
+            const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            const shipping = subtotal >= 500 ? 0 : 50;
+            const total = subtotal + shipping;
+            
+            orderSummaryContainer.innerHTML = `
+                <h4>Résumé de votre commande</h4>
+                ${cart.map(item => `
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                        <span>${item.name} x${item.quantity}</span>
+                        <span>${formatPrice(item.price * item.quantity)}</span>
+                    </div>
+                `).join('')}
+                <hr style="margin: 1rem 0; border: 1px solid var(--light-gray);">
+                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                    <span>Sous-total:</span>
+                    <span>${formatPrice(subtotal)}</span>
+                </div>
+                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                    <span>Livraison:</span>
+                    <span>${shipping === 0 ? 'Gratuite' : formatPrice(shipping)}</span>
+                </div>
+                <div style="display: flex; justify-content: space-between; font-weight: bold; font-size: 1.2rem; color: var(--primary-gold);">
+                    <span>Total:</span>
+                    <span>${formatPrice(total)}</span>
+                </div>
+            `;
+        }
+
+        // Formatage des champs de paiement
+        function formatCardNumber(input) {
+            let value = input.value.replace(/\s/g, '').replace(/[^0-9]/gi, '');
+            let formattedValue = value.match(/.{1,4}/g)?.join(' ') || value;
+            input.value = formattedValue;
+        }
+
+        function formatExpiryDate(input) {
+            let value = input.value.replace(/\D/g, '');
+            if (value.length >= 2) {
+                value = value.substring(0, 2) + '/' + value.substring(2, 4);
+            }
+            input.value = value;
+        }
+
+        function formatCVV(input) {
+            input.value = input.value.replace(/[^0-9]/gi, '');
+        }
+
+        // Traitement du paiement
+        function processPayment(event) {
+            event.preventDefault();
+            
+            const submitBtn = document.getElementById('placeOrderBtn');
+            const originalText = submitBtn.textContent;
+            
+            // Animation de chargement
+            submitBtn.innerHTML = '<span class="loading"></span> Traitement en cours...';
+            submitBtn.disabled = true;
+            
+            // Simuler le traitement du paiement
+            setTimeout(() => {
+                // Vider le panier
+                cart = [];
+                updateCartCounter();
+                
+                // Restaurer le bouton
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+                
+                // Afficher la confirmation
+                showNotification('🎉 Commande confirmée! Merci pour votre achat!', 'success');
+                
+                // Rediriger vers l'accueil
+                setTimeout(() => {
+                    showPage('home');
+                }, 2000);
+                
+            }, 3000);
+        }
+
+        // Recherche de produits
+        function searchProducts(query) {
+            const searchResults = document.getElementById('homeSearchResults') || document.getElementById('productsSearchResults');
+            
+            if (!query.trim()) {
+                searchResults.style.display = 'none';
+                return;
+            }
+            
+            const filteredProducts = products.filter(product => 
+                product.name.toLowerCase().includes(query.toLowerCase()) ||
+                product.description.toLowerCase().includes(query.toLowerCase()) ||
+                product.category.toLowerCase().includes(query.toLowerCase())
+            );
+            
+            if (filteredProducts.length === 0) {
+                searchResults.innerHTML = '<div class="search-result-item">Aucun produit trouvé</div>';
+                searchResults.style.display = 'block';
+                return;
+            }
+            
+            searchResults.innerHTML = filteredProducts.slice(0, 5).map(product => `
+                <div class="search-result-item" onclick="showProductDetail(${product.id}); hideSearchResults();">
+                    <img src="${product.image}" alt="${product.name}" style="width: 50px; height: 50px; object-fit: cover; border-radius: 10px;">
+                    <div>
+                        <div style="font-weight: 600;">${product.name}</div>
+                        <div style="color: var(--gray); font-size: 0.9rem;">${formatPrice(product.price)}</div>
+                    </div>
+                </div>
+            `).join('');
+            
+            searchResults.style.display = 'block';
+            
+            // Si nous sommes sur la page produits, filtrer aussi la grille
+            if (currentPage === 'products') {
+                renderProducts(filteredProducts);
+            }
+        }
+
+        function hideSearchResults() {
+            const searchResults = document.querySelectorAll('.search-results');
+            searchResults.forEach(result => result.style.display = 'none');
+        }
+
+        // Fermer les résultats de recherche en cliquant ailleurs
+        document.addEventListener('click', function(event) {
+            if (!event.target.closest('.search-container')) {
+                hideSearchResults();
+            }
+        });
+
+        // Filtrage des produits
+        function filterProducts(category) {
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            filterBtns.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            let filteredProducts;
+            if (category === 'all') {
+                filteredProducts = products;
+            } else {
+                filteredProducts = products.filter(product => product.category === category);
+            }
+            
+            renderProducts(filteredProducts);
+        }
+
+        // Menu mobile
+        function toggleMobileMenu() {
+            const mobileNav = document.getElementById('mobileNav');
+            const mobileOverlay = document.getElementById('mobileOverlay');
+            
+            mobileNav.classList.toggle('open');
+            mobileOverlay.classList.toggle('open');
+        }
+
+        function closeMobileMenu() {
+            const mobileNav = document.getElementById('mobileNav');
+            const mobileOverlay = document.getElementById('mobileOverlay');
+            
+            mobileNav.classList.remove('open');
+            mobileOverlay.classList.remove('open');
+        }
+
+        // Countdown Timer (conservé pour compatibilité mais non utilisé dans Chabi Chic)
+        function startCountdown() {
+            // Fonction conservée pour éviter les erreurs, mais non utilisée dans le style Chabi Chic
+            return;
+        }
+
+        // Système de notifications
         function showNotification(message, type = 'success') {
             const existingNotifications = document.querySelectorAll('.notification');
             existingNotifications.forEach(notif => notif.remove());
@@ -1167,6 +4165,10 @@
                     backgroundColor = 'linear-gradient(135deg, #2196F3, #1976D2)';
                     icon = 'ℹ️';
                     break;
+                case 'warning':
+                    backgroundColor = 'linear-gradient(135deg, #ff9800, #f57c00)';
+                    icon = '⚠️';
+                    break;
                 default:
                     backgroundColor = 'linear-gradient(135deg, var(--primary-gold), var(--secondary-gold))';
                     icon = '🎉';
@@ -1178,11 +4180,40 @@
             document.body.appendChild(notification);
             
             setTimeout(() => {
-                notification.remove();
+                notification.classList.add('slideOutNotification');
+                setTimeout(() => {
+                    notification.remove();
+                }, 500);
             }, 4000);
         }
 
-        // Header scroll effect
+        // Formulaire de contact
+        function submitContactForm(event) {
+            event.preventDefault();
+            
+            const submitBtn = document.getElementById('contactSubmitBtn');
+            const originalText = submitBtn.textContent;
+            
+            submitBtn.innerHTML = '<span class="loading"></span> Envoi en cours...';
+            submitBtn.disabled = true;
+            
+            setTimeout(() => {
+                const formData = new FormData(event.target);
+                const data = Object.fromEntries(formData);
+                
+                console.log('Données du formulaire:', data);
+                
+                event.target.reset();
+                
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+                
+                showNotification('Message envoyé avec succès! Nous vous répondrons bientôt.', 'success');
+                
+            }, 2000);
+        }
+
+        // Effet de scroll sur le header
         function handleScroll() {
             const header = document.getElementById('header');
             if (window.scrollY > 100) {
@@ -1192,33 +4223,55 @@
             }
         }
 
-        // Event Listeners
-        window.addEventListener('scroll', handleScroll);
-
-        // Initialization
-        document.addEventListener('DOMContentLoaded', function() {
-            setTimeout(() => {
-                showNotification('🎉 Bienvenue chez AMAZIR SHOP! Découvrez nos créations authentiques!', 'success');
-            }, 2000);
-        });
-
-        // Add to cart functionality (placeholder)
-        function addToCart(productId) {
-            showNotification('✅ Produit ajouté au panier!', 'success');
-            // Update cart counter
-            const counter = document.getElementById('cartCounter');
-            let count = parseInt(counter.textContent) || 0;
-            counter.textContent = count + 1;
+        // Gestion de l'URL
+        function handleUrlChange() {
+            const hash = window.location.hash.substring(1);
+            if (hash && document.getElementById(hash)) {
+                showPage(hash);
+            }
         }
 
-        // Add event listeners to buy buttons
+        // Event Listeners
+        window.addEventListener('scroll', handleScroll);
+        window.addEventListener('popstate', handleUrlChange);
+        window.addEventListener('load', () => {
+            handleUrlChange();
+            renderProducts();
+        });
+
+        // Fermer le menu mobile en cliquant à l'extérieur
+        document.addEventListener('click', function(event) {
+            const mobileNav = document.getElementById('mobileNav');
+            const mobileBtn = document.querySelector('.mobile-menu-btn');
+            
+            if (!mobileNav.contains(event.target) && !mobileBtn.contains(event.target)) {
+                closeMobileMenu();
+            }
+        });
+
+        // Initialisation
         document.addEventListener('DOMContentLoaded', function() {
-            const buyButtons = document.querySelectorAll('.buy-btn, .quick-view-btn');
-            buyButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    addToCart(1); // placeholder product ID
-                });
-            });
+            startCountdown();
+            renderProducts();
+            
+            setTimeout(() => {
+                showNotification('🎉 Bienvenue chez AMAZIR SHOP! Profitez de -30% sur toute la collection!', 'success');
+            }, 2000);
+
+            // Notifications promotionnelles périodiques
+            setInterval(() => {
+                const promoMessages = [
+                    '⚡ Dernière chance! Offre limitée expire bientôt',
+                    '🚚 Livraison gratuite pour toute commande de 500 DH+',
+                    '💎 Nouveaux produits exclusifs disponibles',
+                    '🎯 Plus de 50 nouveaux produits ajoutés!'
+                ];
+                
+                if (Math.random() < 0.3) {
+                    const message = promoMessages[Math.floor(Math.random() * promoMessages.length)];
+                    showNotification(message, 'info');
+                }
+            }, 60000);
         });
     </script>
 </body>
